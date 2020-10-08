@@ -1,0 +1,9 @@
+<div>
+    <h3>{{evento.nombre}}</h3>
+</div>
+<ul>
+{% for subevento in object_list %}
+<li><a href="{% url 'actividad' subevento.id %}">{{subevento.nombre}}</a></li>
+
+{% endfor %}
+</ul>

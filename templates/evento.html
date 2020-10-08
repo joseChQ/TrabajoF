@@ -1,0 +1,6 @@
+<h1>Lista de eventos gaasdf...!</h1>
+<ul>
+{% for evento in object_list %}
+<li><a href="{% url 'subevento' evento.id %}">{{evento.nombre}}</a></li>
+{% endfor %}
+</ul>

@@ -1,0 +1,11 @@
+<div>
+    <h3>{{actividad.nombre}}</h3>
+</div>
+
+<div>
+<h2><a href="{% url 'crearPonente' actividad.id %}">crear Ponente</h2>
+</div>
+{% for ponente in object_list %}
+<li>{{ponente.nombre}}</li>
+
+{% endfor %}
