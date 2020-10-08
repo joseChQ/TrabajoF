@@ -38,8 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'caja',
-    'inscripciones',
-    'configuraciones',# new
+    'gEvento',
+    'gActividad',
+    'gReporte',
+    'gAmbiente',
+    'gPromocion',
+    'gSubevento',
+    'accounts',
 ]
 
 MIDDLEWARE = [
