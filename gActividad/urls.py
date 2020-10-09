@@ -4,5 +4,6 @@ from . import views
 urlpatterns = [
     path('<int:pk>/', views.HomePageView.as_view() , name ='actividad'),
     path('Ponente/crear/<int:pk>/', views.CrearPonente.as_view() , name ='crearPonente'),
-    path('Ponente/lista/<int:pk>/', views.ListaPonente.as_view() , name ='listaPonente')
+    path('Ponente/lista/<int:pk>/', views.ListaPonente.as_view() , name ='listaPonente'),
+    path('Actividad/crear/<int:pk>/', views.CrearActividad.as_view() , name ='crearActividad')
 ]

@@ -1,9 +1,10 @@
 <div>
-    <h3>{{actividad.nombre}}</h3>
+    <h2>{{actividad.nombre}}</h2>
 </div>
 
 <div>
-<h2><a href="{% url 'crearPonente' actividad.id %}">crear Ponente</h2>
+<h2><a href="{% url 'crearPonente' actividad.id %}"> Crear Ponente</a></h2>
+<h3>Lista ponente</h3>
 </div>
 {% for ponente in object_list %}
 <li>{{ponente.nombre}}</li>

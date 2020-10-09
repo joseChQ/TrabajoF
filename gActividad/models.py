@@ -8,6 +8,8 @@ class Actividad(models.Model):
     horaFin = models.TimeField()
     fechaInicio = models.DateField()
     fechaClausura = models.DateField()
+    def get_absolute_url(self):
+        return reverse('actividad', args=[str(self.idSubevento.id)])
     def __str__(self):
         return self.nombre
 
@@ -18,4 +20,6 @@ class Ponente(models.Model):
     informacionAcademica = models.CharField(max_length = 30)
     correo = models.EmailField(max_length = 50)
     def get_absolute_url(self):
-        return reverse('actividad', args=[str(self.idActividad.idSubevento.id)])
+        return reverse('listaPonente', args=[str(self.idActividad.id)])
+    def __str__(self):
+        return self.nombre

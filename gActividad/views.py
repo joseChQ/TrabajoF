@@ -23,6 +23,15 @@ class CrearPonente(CreateView):
         form.instance.idActividad = self.actividad
         return super(CrearPonente, self).form_valid(form)
 
+class CrearActividad(CreateView):
+    model = Actividad
+    template_name = 'actividad_new.html'
+    fields = ['nombre','horaInicio','horaFin','fechaInicio','fechaClausura']
+    def form_valid(self, form):
+        self.subevento = get_object_or_404(Subevento, pk = self.kwargs['pk'])
+        form.instance.idSubevento = self.subevento
+        return super(CrearActividad, self).form_valid(form)
+        
 class ListaPonente(ListView):
     model = Ponente
     template_name = 'ponente.html'
