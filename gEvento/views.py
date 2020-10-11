@@ -1,5 +1,6 @@
-from django.shortcuts import render , get_object_or_404
-from django.views.generic import ListView, CreateView
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import ListView, CreateView, FormView
+from django.urls import reverse_lazy
 # Create your views here.
 
 # Base de datos
@@ -7,7 +8,7 @@ from .models import Evento
 from .models import Subevento
 
 # Tipos de formularios
-from .forms import Formulario_Evento
+from .forms import Form_Evento
 
 # from .models import *
 
@@ -27,20 +28,16 @@ class VistaSubevento(ListView):
         context['evento'] = self.evento
         return context
 
-class CrearEvento(CreateView):
-    model = Evento
+class CrearEvento(FormView):
     template_name = 'evento_new.html'
-    fields = ['nombre','fechaInicio','fechaClausura','ubicacion']
+    form_class = Form_Evento
+    success_url = reverse_lazy('evento')
 
+    def validarEntrada(self, fchInicio, fchClausura):
+        return fchInicio < fchClausura
 
-def crear_evento(request):
-        if request.method =='POST':
-            form_Evento = Formulario_Evento(request.post)
-            
-            if form_Evento.is_valid():
-                infForm = form_Evento.cleaned_data()
-                
-        else:
-            form_Evento = Formulario_Evento()
-        
-        return render(request,'evento_new.html', {"form":form_Evento})
+    def form_valid(self, form):
+        data_Evento = form.cleaned_data
+        if self.validarEntrada(data_Evento['fechaInicio'],data_Evento['fechaClausura']):
+            form.save()
+        return super().form_valid(form)
