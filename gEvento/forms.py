@@ -23,4 +23,11 @@ class Form_Evento(forms.ModelForm):
             'fechaClausura': forms.TextInput(attrs={'type':'date'}),
             'ubicacion': forms.TextInput(),
         }
-    
+
+    def clean_fechaClausura(self, *args, **kwargs):
+        fechaInicio = self.cleaned_data.get("fechaInicio")
+        fechaClausura = self.cleaned_data.get("fechaClausura")
+        if fechaInicio <= fechaClausura:
+            return fechaClausura
+        else:
+            raise forms.ValidationError("Fecha de clausura invalida")

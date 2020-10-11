@@ -32,14 +32,8 @@ class CrearEvento(FormView):
     template_name = 'evento_new.html'
     form_class = Form_Evento
     success_url = reverse_lazy('evento')
-
-    def validarEntrada(self, fchInicio, fchClausura):
-        return fchInicio < fchClausura
-
+    
     def form_valid(self, form):
-        data_Evento = form.cleaned_data
-        if self.validarEntrada(data_Evento['fechaInicio'],data_Evento['fechaClausura']):
-            form.save()
-        else:
-            return super().form_invalid(form)
-        return super().form_valid(form)
+       if form.is_valid():
+           form.save();  
+       return super().form_valid(form)
