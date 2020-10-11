@@ -40,4 +40,6 @@ class CrearEvento(FormView):
         data_Evento = form.cleaned_data
         if self.validarEntrada(data_Evento['fechaInicio'],data_Evento['fechaClausura']):
             form.save()
+        else:
+            return super().form_invalid(form)
         return super().form_valid(form)
