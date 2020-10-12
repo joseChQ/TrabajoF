@@ -1,11 +1,11 @@
+<h1>DJARI</h1>
 <h1>Lista de eventos gaasdf...!</h1>
-
 <div>
     <h2><a href="{% url 'crearEvento' %}"> Crear evento</a></h2>
 </div>
 
 <ul>
     {% for evento in object_list %}
-    <li><a href="{% url 'subevento' evento.id %}">{{evento.nombre}}</a></li>
+    <li><a href="{% url 'eventoDetail' evento.id %}">{{evento.nombre}}</a></li>
     {% endfor %}
 </ul>   

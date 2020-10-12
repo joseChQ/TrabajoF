@@ -8,7 +8,8 @@ from .models import Evento
 from .models import Subevento
 
 # Tipos de formularios
-from .forms import Form_Evento
+from .forms import Form_Evento, Form_Subevento
+from gActividad.models import Actividad
 
 # from .models import *
 
@@ -17,23 +18,40 @@ class HomePageView(ListView):
     template_name = 'evento.html'
 
 
-class VistaSubevento(ListView):
+class EventoI(ListView):
     model = Subevento
-    template_name = 'subevento.html'
+    template_name = 'evento_detail.html'
     def get_queryset(self):
         self.evento = get_object_or_404(Evento, pk = self.kwargs['pk'])
         return Subevento.objects.filter(idEvento =self.evento)
+
     def get_context_data(self, **kwargs):
-        context = super(VistaSubevento, self).get_context_data(**kwargs)
+        context = super(EventoI, self).get_context_data(**kwargs)
         context['evento'] = self.evento
         return context
 
-class CrearEvento(FormView):
+class CrearEvento(CreateView):
     template_name = 'evento_new.html'
     form_class = Form_Evento
     success_url = reverse_lazy('evento')
-    
+
+
+class CrearSubevento(CreateView):
+    form_class = Form_Subevento
+    template_name = 'subevento_new.html'
     def form_valid(self, form):
-       if form.is_valid():
-           form.save();  
-       return super().form_valid(form)
+        self.evento = get_object_or_404(Evento, pk = self.kwargs['pk'])
+        form.instance.idEvento = self.evento
+        return super(CrearSubevento, self).form_valid(form)
+
+
+class SubeventoI(ListView):
+    model = Actividad
+    template_name = 'subevento_detail.html'
+    def get_queryset(self):
+        self.subevento = get_object_or_404(Subevento, pk = self.kwargs['pk'])
+        return Actividad.objects.filter(idSubevento =self.subevento)
+    def get_context_data(self, **kwargs):
+        context = super(SubeventoI, self).get_context_data(**kwargs)
+        context['subevento'] = self.subevento
+        return context    

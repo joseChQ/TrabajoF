@@ -3,15 +3,18 @@ from django.views.generic import ListView, CreateView
 from .models import Actividad, Ponente
 from gEvento.models import Subevento
 
-class HomePageView(ListView):
-    model = Actividad
-    template_name = 'actividad.html'
+from .forms import Form_Actividad
+
+class ActividadI(ListView):
+    model = Ponente
+    template_name = 'actividad_detail.html'
     def get_queryset(self):
-        self.subevento = get_object_or_404(Subevento, pk = self.kwargs['pk'])
-        return Actividad.objects.filter(idSubevento =self.subevento)
+        self.actividad = get_object_or_404(Actividad, pk = self.kwargs['pk'])
+        return Ponente.objects.filter(idActividad =self.actividad)
+
     def get_context_data(self, **kwargs):
-        context = super(HomePageView, self).get_context_data(**kwargs)
-        context['subevento'] = self.subevento
+        context = super(ActividadI, self).get_context_data(**kwargs)
+        context['actividad'] = self.actividad
         return context
 
 class CrearPonente(CreateView):
@@ -24,22 +27,9 @@ class CrearPonente(CreateView):
         return super(CrearPonente, self).form_valid(form)
 
 class CrearActividad(CreateView):
-    model = Actividad
+    form_class = Form_Actividad
     template_name = 'actividad_new.html'
-    fields = ['nombre','horaInicio','horaFin','fechaInicio','fechaClausura']
     def form_valid(self, form):
         self.subevento = get_object_or_404(Subevento, pk = self.kwargs['pk'])
         form.instance.idSubevento = self.subevento
         return super(CrearActividad, self).form_valid(form)
-        
-class ListaPonente(ListView):
-    model = Ponente
-    template_name = 'ponente.html'
-    def get_queryset(self):
-        self.actividad = get_object_or_404(Actividad, pk = self.kwargs['pk'])
-        return Ponente.objects.filter(idActividad =self.actividad)
-
-    def get_context_data(self, **kwargs):
-        context = super(ListaPonente, self).get_context_data(**kwargs)
-        context['actividad'] = self.actividad
-        return context

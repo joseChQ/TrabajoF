@@ -1,0 +1,20 @@
+<div>
+    <h2>{{actividad.nombre}}</h2>
+    <!-- agreguen todos sus detalles de actividad bn facha  -->
+</div>
+
+<div>
+<h2><a href="{% url 'crearPonente' actividad.id %}"> Crear Ponente</a></h2>
+<h3>Lista ponente</h3>
+</div>
+
+<ul>
+    {% if object_list %}
+        {% for ponente in object_list %}
+        <li>{{ponente.nombre}}</li>
+         <!-- mostremos esta lista con mas detalles -->
+        {% endfor %}
+    {% else %}
+        <p>No existen Ponentes</p>
+    {% endif %} 
+</ul>

@@ -1,9 +1,0 @@
-<div>
-    <h2>Nombre:{{subevento.nombre}} </h2>
-    <h2><a href="{% url 'crearActividad' subevento.id %}"> Crear actividad</a></h2>
-    <h3>Lista de actividades</h3>
-</div>
-{% for actividad in object_list %}
-<li><a href="{% url 'listaPonente' actividad.id %}">{{actividad}}</a></li>
-
-{% endfor %}

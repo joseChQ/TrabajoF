@@ -1,0 +1,17 @@
+<div>
+    <h2>Nombre:{{subevento.nombre}} </h2>
+    <!-- agreguen todos sus detalles plox -->
+    <h2><a href="{% url 'crearActividad' subevento.id %}"> Crear actividad</a></h2>
+    <h3>Lista de actividades</h3>
+</div>
+<ul>
+    {% if object_list %}
+    
+    {% for actividad in object_list %}
+    <li><a href="{% url 'actividadDetail' actividad.id %}">{{actividad.nombre}}</a></li>
+    {% endfor %}
+    
+    {% else %}
+    <p>No existen actividades</p>
+    {% endif %} 
+</ul>

@@ -1,0 +1,23 @@
+<div>
+    <h2>{{evento.nombre}}</h2>
+    <p>{{evento.detalle}}</p>
+    <p>{{evento.fechaInicio}}</p>
+    <p>{{evento.fechaClausura}}</p>
+    <p>{{evento.ubicacion}}</p>
+    <!-- agreguen todos sus detalles de actividad bn facha  -->
+</div>
+<div>
+    <h2><a href="{% url 'crearSubevento' evento.id %}"> Crear Subevento</a></h2>
+    <h2>Lista subeventos</h2>
+</div>
+    <ul>
+    {% if object_list %}
+    
+        {% for subevento in object_list %}
+        <li><a href="{% url 'subeventoDetail' subevento.id %}">{{subevento.nombre}}</a></li>
+        {% endfor %}
+    
+    {% else %}
+        <p>No existen subeventos</p>
+    {% endif %} 
+    </ul>

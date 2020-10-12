@@ -9,7 +9,7 @@ class Actividad(models.Model):
     fechaInicio = models.DateField()
     fechaClausura = models.DateField()
     def get_absolute_url(self):
-        return reverse('actividad', args=[str(self.idSubevento.id)])
+        return reverse('subeventoDetail', args=[str(self.idSubevento.id)])
     def __str__(self):
         return self.nombre
 
