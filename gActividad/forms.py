@@ -7,10 +7,10 @@ class Form_Actividad(forms.ModelForm):
         model = Actividad
         fields = [
             'nombre',
-            'horaInicio',
-            'horaFin',
             'fechaInicio',
             'fechaClausura',
+            'horaInicio',
+            'horaFin',
         ]
         labels = {
             'nombre' : 'Nombre del Evento',
@@ -40,9 +40,7 @@ class Form_Actividad(forms.ModelForm):
         horaFin = self.cleaned_data.get("horaFin")
         fechaInicio1 = self.fields["fechaInicio"]
         fechaClausura1 = self.cleaned_data.get("fechaClausura")
-        print(horaInicio)
-        print(horaFin)
-        if horaInicio <= horaFin:
+        if horaInicio <= horaFin or fechaInicio1 != fechaClausura1:
             return horaFin
         else:
             raise forms.ValidationError("Hora de fin invalida")        
