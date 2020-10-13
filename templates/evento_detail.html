@@ -1,23 +1,44 @@
-<div>
-    <h2>{{evento.nombre}}</h2>
-    <p>{{evento.detalle}}</p>
-    <p>{{evento.fechaInicio}}</p>
-    <p>{{evento.fechaClausura}}</p>
-    <p>{{evento.ubicacion}}</p>
-    <!-- agreguen todos sus detalles de actividad bn facha  -->
-</div>
-<div>
-    <h2><a href="{% url 'crearSubevento' evento.id %}"> Crear Subevento</a></h2>
-    <h2>Lista subeventos</h2>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="jumbotron text-center">
+        <h1>El boostrapa si funca</h1>
+    </div>
+
+    <div>
+        <h2>{{evento.nombre}}</h2>
+        <p>{{evento.detalle}}</p>
+        <p>{{evento.fechaInicio}}</p>
+        <p>{{evento.fechaClausura}}</p>
+        <p>{{evento.ubicacion}}</p>
+        <!-- agreguen todos sus detalles de actividad bn facha  -->
+    </div>
+    <div>
+        <h2><a href="{% url 'crearSubevento' evento.id %}"> Crear Subevento</a></h2>
+        <h2>Lista subeventos</h2>
+    </div>
     <ul>
-    {% if object_list %}
-    
+        {% if object_list %}
+
         {% for subevento in object_list %}
         <li><a href="{% url 'subeventoDetail' subevento.id %}">{{subevento.nombre}}</a></li>
         {% endfor %}
-    
-    {% else %}
+
+        {% else %}
         <p>No existen subeventos</p>
-    {% endif %} 
+        {% endif %}
     </ul>
+</body>
+
+</html>
