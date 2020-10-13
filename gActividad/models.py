@@ -14,12 +14,22 @@ class Actividad(models.Model):
         return self.nombre
 
 class Ponente(models.Model):
-    idActividad = models.ForeignKey(Actividad, on_delete = models.CASCADE)
+    actividades = models.ManyToManyField(
+        Actividad,
+        through='ActividadPonente'
+    )
     nombre = models.CharField(max_length = 30)
     apellido = models.CharField(max_length = 30)
     informacionAcademica = models.CharField(max_length = 30)
     correo = models.EmailField(max_length = 50)
     def get_absolute_url(self):
-        return reverse('listaPonente', args=[str(self.idActividad.id)])
+        return reverse('actividadDetail', args=[str(self.idActividad.id)])
+
     def __str__(self):
         return self.nombre
+
+class ActividadPonente(models.Model):
+    actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE)
+    ponente = models.ForeignKey(Ponente, on_delete=models.CASCADE)
+    def get_absolute_url(self):
+        return reverse('actividadDetail', args=[str(self.actividad.id)])

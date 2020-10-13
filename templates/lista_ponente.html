@@ -1,0 +1,13 @@
+<h3>Lista ponente</h3>
+</div>
+
+<ul>
+    {% if object_list %}
+        {% for ponente in object_list %}
+        <li><a href="{% url 'asignarRedirect' actividad.id ponente.id %}">{{ponente.nombre}}</a></li>
+         <!-- mostremos esta lista con mas detalles -->
+        {% endfor %}
+    {% else %}
+        <p>No existen Ponentes</p>
+    {% endif %} 
+</ul>

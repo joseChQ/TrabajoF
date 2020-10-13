@@ -1,7 +1,7 @@
 from django import forms
 
 from gEvento.models import Subevento
-from .models import Actividad
+from .models import Actividad, Ponente
 class Form_Actividad(forms.ModelForm):
     class Meta:
         model = Actividad
@@ -43,4 +43,28 @@ class Form_Actividad(forms.ModelForm):
         if horaInicio <= horaFin or fechaInicio1 != fechaClausura1:
             return horaFin
         else:
-            raise forms.ValidationError("Hora de fin invalida")        
+            raise forms.ValidationError("Hora de fin invalida")
+
+['nombre','apellido','informacionAcademica','correo']
+
+class Form_Ponente(forms.ModelForm):
+    class Meta:
+        model = Ponente
+        fields = [
+            'nombre',
+            'apellido',
+            'informacionAcademica',
+            'correo',
+        ]
+        labels = {
+            'nombre' : 'Nombre del Ponente',
+            'apellido' : 'Apellido del Ponente',
+            'informacionAcademica' : 'Informacion',
+            'correo' : 'Correo electronico',
+        }
+        widgets = {
+            'nombre' : forms.TextInput(),
+            'apellido': forms.TextInput(),
+            'informacionAcademica': forms.TextInput(),
+            'correo': forms.TextInput(attrs={'type':'email'}),
+        }
