@@ -1,17 +1,82 @@
-<div>
-    <h2>Nombre:{{subevento.nombre}} </h2>
-    <!-- agreguen todos sus detalles plox -->
-    <h2><a href="{% url 'crearActividad' subevento.id %}"> Crear actividad</a></h2>
-    <h3>Lista de actividades</h3>
-</div>
-<ul>
-    {% if object_list %}
-    
-    {% for actividad in object_list %}
-    <li><a href="{% url 'actividadDetail' actividad.id %}">{{actividad.nombre}}</a></li>
-    {% endfor %}
-    
-    {% else %}
-    <p>No existen actividades</p>
-    {% endif %} 
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <s src="https://ajax.googleap  is.com/ajax/libs/jquery/3.5.1/jquery.min.js"></s>
+    <s src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></s>
+</head>
+
+<body>
+
+    <div class="container-fluid bg-primary py-5">
+        <h1 class="display-3">DJARI</h1>
+    </div>
+
+    <!-- Evento detalees -->
+    <!-- <div class="container py-5 text-center">
+
+        
+        <ul class="list-group text-white">
+            <li class="list-group-item"><p>{{evento.detalle}}</p></li>
+            <li class="list-group-item"><p>{{evento.fechaInicio}}</p></li>
+            <li class="list-group-item"><p>{{evento.fechaClausura}}</p></li>
+            <li class="list-group-item"><p>{{evento.ubicacion}}</p></li>
+        </ul>        
+    </div> -->
+
+    <!-- Subevento Detallees -->
+    <div class="container py-5 text-center">
+        <p class="h1 bg-primary" style="padding:10px;">{{subevento.nombre}}</p>
+        <ul class="list-group text-white">
+            <li class="list-group-item">
+                <p>{{subevento.fechaInicio}}</p>
+            </li>
+            <li class="list-group-item">
+                <p>{{subevento.fechaClausura}}</p>
+            </li>
+        </ul>
+
+        <!-- agreguen todos sus detalles plox -->
+
+
+
+        <div class="container py-5 text-center">
+            <p class="h1 bg-primary" style="padding: 10px; margin-bottom: 30px;">Lista actividades</p>
+        </div>
+        <div class="container py-5" style="margin-top: 30px;">
+            <div class="list-group text-center">
+                {% if object_list %}
+
+                {% for actividad in object_list %}
+                <a class="list-group-item list-group-item-action"
+                    href="{% url 'actividadDetail' actividad.id %}">{{actividad.nombre}}</a>
+                {% endfor %}
+
+                {% else %}
+                <p>No existen actividades</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <a href="{% url 'crearActividad' subevento.id %}" class="btn btn-lg btn-primary" role="but"> Crear Actividad</a>
+    </div>
+
+
+    <!--     
+    <ul>
+        {% if object_list %}
+
+        {% for actividad in object_list %}
+        <li><a href="{% url 'actividadDetail' actividad.id %}">{{actividad.nombre}}</a></li>
+        {% endfor %}
+
+        {% else %}
+        <p>No existen actividades</p>
+        {% endif %}
+    </ul> -->
+
+</body>

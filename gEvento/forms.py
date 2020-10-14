@@ -20,11 +20,17 @@ class Form_Evento(forms.ModelForm):
             'ubicacion' : 'Ubicacion',
         }
         widgets = {
-            'nombre' : forms.TextInput(attrs={'placeholder':'evento ejemplo'}),
-            'detalle': forms.TextInput(),
-            'fechaInicio': forms.TextInput(attrs={'type':'date'}),
-            'fechaClausura': forms.TextInput(attrs={'type':'date'}),
-            'ubicacion': forms.TextInput(),
+            # 'nombre' : forms.TextInput(attrs={'placeholder':'evento ejemplo'}),
+            # 'detalle': forms.TextInput(),
+            # 'fechaInicio': forms.TextInput(attrs={'type':'date'}),
+            # 'fechaClausura': forms.TextInput(attrs={'type':'date'}),
+            # 'ubicacion': forms.TextInput(),
+
+            'nombre' : forms.TextInput(attrs={'placeholder':'evento ejemplo','class':'form-control'}),
+            'detalle': forms.TextInput(attrs={'class':'form-control'}),
+            'fechaInicio': forms.TextInput(attrs={'type':'date','class':'form-control'}),
+            'fechaClausura': forms.TextInput(attrs={'type':'date','class':'form-control'}),
+            'ubicacion': forms.TextInput(attrs={'class':'form-control'}),   
         }
 
     def clean_fechaClausura(self, *args, **kwargs):
@@ -49,9 +55,13 @@ class Form_Subevento(forms.ModelForm):
             'fechaClausura' : 'Fecha de Clausura',
         }
         widgets = {
-            'nombre' : forms.TextInput(attrs={'placeholder':'subevento ejemplo'}),
-            'fechaInicio': forms.TextInput(attrs={'type':'date'}),
-            'fechaClausura': forms.TextInput(attrs={'type':'date'}),
+            # 'nombre' : forms.TextInput(attrs={'placeholder':'subevento ejemplo'}),
+            # 'fechaInicio': forms.TextInput(attrs={'type':'date'}),
+            # 'fechaClausura': forms.TextInput(attrs={'type':'date'}),
+
+            'nombre' : forms.TextInput(attrs={'placeholder':'subevento ejemplo','class':'form-control'}),
+            'fechaInicio': forms.TextInput(attrs={'type':'date','class':'form-control'}),
+            'fechaClausura': forms.TextInput(attrs={'type':'date','class':'form-control'}),
         }
     
     def clean_fechaClausura(self, *args, **kwargs):

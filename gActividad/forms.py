@@ -20,11 +20,17 @@ class Form_Actividad(forms.ModelForm):
             'fechaClausura' : 'Fecha de Clausura',
         }
         widgets = {
-            'nombre' : forms.TextInput(attrs={'placeholder':'Actividad ejemplo'}),
-            'horaInicio': forms.TextInput(attrs={'type':'time'}),
-            'horaFin': forms.TextInput(attrs={'type':'time'}),
-            'fechaInicio': forms.TextInput(attrs={'type':'date'}),
-            'fechaClausura': forms.TextInput(attrs={'type':'date'}),
+            # 'nombre' : forms.TextInput(attrs={'placeholder':'Actividad ejemplo'}),
+            # 'horaInicio': forms.TextInput(attrs={'type':'time'}),
+            # 'horaFin': forms.TextInput(attrs={'type':'time'}),
+            # 'fechaInicio': forms.TextInput(attrs={'type':'date'}),
+            # 'fechaClausura': forms.TextInput(attrs={'type':'date'}),
+
+            'nombre' : forms.TextInput(attrs={'placeholder':'Actividad ejemplo','class':'form-control'}),
+            'horaInicio': forms.TextInput(attrs={'type':'time','class':'form-control'}),
+            'horaFin': forms.TextInput(attrs={'type':'time','class':'form-control'}),
+            'fechaInicio': forms.TextInput(attrs={'type':'date','class':'form-control'}),
+            'fechaClausura': forms.TextInput(attrs={'type':'date','class':'form-control'}),
         }
 
     def clean_fechaClausura(self, *args, **kwargs):
@@ -63,8 +69,8 @@ class Form_Ponente(forms.ModelForm):
             'correo' : 'Correo electronico',
         }
         widgets = {
-            'nombre' : forms.TextInput(),
-            'apellido': forms.TextInput(),
-            'informacionAcademica': forms.TextInput(),
-            'correo': forms.TextInput(attrs={'type':'email'}),
+            'nombre' : forms.TextInput(attrs={'type':'text','class':'form-control'}),
+            'apellido': forms.TextInput(attrs={'type':'text','class':'form-control'}),
+            'informacionAcademica': forms.TextInput(attrs={'type':'text','class':'form-control'}),
+            'correo': forms.TextInput(attrs={'type':'email','class':'form-control'}),
         }
