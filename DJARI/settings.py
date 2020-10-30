@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'gPromocion',
     'gSubevento',
     'accounts',
+    'gMaterial',
 ]
 
 MIDDLEWARE = [

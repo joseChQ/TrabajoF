@@ -15,12 +15,9 @@
         <h1 class="display-3">DJARI</h1>
     </div>
 
-    <a href="{% url 'material' %}" class="list-group-item list-group-item-info active">
-        Material
-    </a>
     
     <div class="container py-5 text-center">
-        <p class="h1 bg-primary" style="padding: 10px; margin-bottom: 30px;">Lista Eventos</p>
+        <p class="h1 bg-primary" style="padding: 10px; margin-bottom: 30px;">Lista Material</p>
     </div>
 
 
@@ -28,13 +25,12 @@
     <div class="container py-5">
         <div class="list-group text-center">
 
-            {% for evento in object_list %}
-            <a class="list-group-item list-group-item-action"
-                href="{% url 'eventoDetail' evento.id    %}">{{evento.nombre}}</a>
+            {% for material in object_list %}
+            <a>{{material.nombre}}</a>
             {% endfor %}
 
-            <a href="{% url 'crearEvento' %}" class="list-group-item list-group-item-info active">
-                Crea Evento
+            <a href="{% url 'crearMaterial' %}" class="list-group-item list-group-item-info active">
+                Crea Material
             </a>
 
         </div>
