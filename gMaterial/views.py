@@ -10,7 +10,6 @@ class HomePageView(ListView):
     template_name = 'material.html'
 
 class CrearMaterial(CreateView):
-    model = Material
-    fields = ['nombre','stock','costo']
+    form_class = Form_Material
     template_name = 'material_new.html'
     success_url = reverse_lazy('material')

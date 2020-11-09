@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('gEvento.urls')),
     path('gActividad/', include('gActividad.urls')),
     path('gMaterial/', include('gMaterial.urls')),
+    path('gAmbiente/', include('gAmbiente.urls')),
 ]

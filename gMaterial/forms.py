@@ -15,9 +15,6 @@ class Form_Material(forms.ModelForm):
             'stock' : 'Stock',
             'costo' : 'Costo',
         }
-        widgets = {
-        
+        widgets = {      
             'nombre' : forms.TextInput(attrs={'placeholder':'material ejemplo','class':'form-control'}),
-            'stock': forms.IntegerField(),
-            'costo': forms.FloatField()
         }

@@ -51,7 +51,6 @@ class Form_Actividad(forms.ModelForm):
         else:
             raise forms.ValidationError("Hora de fin invalida")
 
-['nombre','apellido','informacionAcademica','correo']
 
 class Form_Ponente(forms.ModelForm):
     class Meta:

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Bootstrap Example</title>
+    <title>Ambiente</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -15,14 +15,9 @@
         <h1 class="display-3">DJARI</h1>
     </div>
 
-    <a href="{% url 'material' %}" class="list-group-item list-group-item-info active">
-        Material
-    </a>
-    <a href="{% url 'ambiente' %}" class="list-group-item list-group-item-info active">
-        Ambiente
-    </a>
+    
     <div class="container py-5 text-center">
-        <p class="h1 bg-primary" style="padding: 10px; margin-bottom: 30px;">Lista Eventos</p>
+        <p class="h1 bg-primary" style="padding: 10px; margin-bottom: 30px;">Lista Ambiente</p>
     </div>
 
 
@@ -30,13 +25,12 @@
     <div class="container py-5">
         <div class="list-group text-center">
 
-            {% for evento in object_list %}
-            <a class="list-group-item list-group-item-action"
-                href="{% url 'eventoDetail' evento.id    %}">{{evento.nombre}}</a>
+            {% for ambiente in object_list %}
+            <a>{{ambiente.id}}: {{ambiente.descripcion}}</a>
             {% endfor %}
 
-            <a href="{% url 'crearEvento' %}" class="list-group-item list-group-item-info active">
-                Crea Evento
+            <a href="{% url 'crearAmbiente' %}" class="list-group-item list-group-item-info active">
+                Crea ambiente
             </a>
 
         </div>

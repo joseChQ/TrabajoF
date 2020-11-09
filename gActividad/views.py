@@ -38,6 +38,7 @@ class CrearActividad(CreateView):
         form.instance.idSubevento = self.subevento
         return super(CrearActividad, self).form_valid(form)
 
+
 class ListaPonente(ListView):
     model = Ponente
     template_name = 'lista_ponente.html'
