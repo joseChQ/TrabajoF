@@ -10,6 +10,7 @@ from .models import Subevento
 # Tipos de formularios
 from .forms import Form_Evento, Form_Subevento
 from gActividad.models import Actividad
+from gPromocion.models import Promocion
 
 # from .models import *
 
@@ -27,7 +28,9 @@ class EventoI(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(EventoI, self).get_context_data(**kwargs)
+        promociones = Promocion.objects.filter(idEvento = self.evento)
         context['evento'] = self.evento
+        context['promociones'] = promociones
         return context
 
 class CrearEvento(CreateView):

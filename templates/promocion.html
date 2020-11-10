@@ -14,21 +14,16 @@
     <div class="container-fluid bg-primary py-5">
         <h1 class="display-3">DJARI</h1>
     </div>
-    <a class="list-group-item list-group-item-action"
-                href="{% url 'promocion' evento.id    %}">Promociones</a>
+    <a href="{% url 'eventoDetail' evento.id  %}"class="list-group-item list-group-item-info active">
+        Subeventos
+    </a>
     <div class="container py-5 text-center">
 
         <p class="h1 bg-primary" style="padding:10px;">{{evento.nombre}}</p>
-        <ul class="list-group text-white">
-            <li class="list-group-item"><p>{{evento.detalle}}</p></li>
-            <li class="list-group-item"><p>{{evento.fechaInicio}}</p></li>
-            <li class="list-group-item"><p>{{evento.fechaClausura}}</p></li>
-            <li class="list-group-item"><p>{{evento.ubicacion}}</p></li>
-        </ul>        
     </div>
     
     <div class="container py-5 text-center">
-                <p class="h1 bg-primary" style="padding: 10px;">Lista de Sub-eventos</p>
+                <p class="h1 bg-primary" style="padding: 10px;">Lista de Promociones</p>
     </div>
 
     
@@ -36,19 +31,17 @@
         <div class="list-group text-center">
             {% if object_list %}
 
-            {% for subevento in object_list %}
+            {% for promocion in object_list %}
             
-            <a class="list-group-item list-group-item-action"
-            href="{% url 'subeventoDetail' subevento.id %}">{{subevento.nombre}}</a>
+            <li>
+            <a href="{% url 'promocionDetail' promocion.id %}" >{{promocion.nombre}}: ${{promocion.precio}} </a></li>    
                 
             {% endfor %}
-
-            
             {% else %}
-                <p>No existen subeventos</p>
+                <p>No existen Promociones</p>
             {% endif %}
 
-            <a href="{% url 'crearSubevento' evento.id %}" class="btn btn-lg btn-primary" role="but"> Crear Subevento</a>
+            <a href="{% url 'crearPromocion' evento.id %}" class="btn btn-lg btn-primary" role="but"> Crear Promocion</a>
             
         </div>
     </div>

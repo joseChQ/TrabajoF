@@ -1,0 +1,13 @@
+<h3>Lista actividades</h3>
+</div>
+
+<ul>
+    {% if object_list %}
+        {% for actividad in object_list %}
+        <li><a href="{% url 'RedirectP' actividad.id promocion.id %}">{{actividad.nombre}}</a></li>
+         <!-- mostremos esta lista con mas detalles -->
+        {% endfor %}
+    {% else %}
+        <p>No existen actividades</p>
+    {% endif %} 
+</ul>
