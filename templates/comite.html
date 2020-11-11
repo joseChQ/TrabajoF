@@ -23,7 +23,7 @@
     </div>
     
     <div class="container py-5 text-center">
-                <p class="h1 bg-primary" style="padding: 10px;">Lista de Promociones</p>
+                <p class="h1 bg-primary" style="padding: 10px;">Lista de Comites</p>
     </div>
 
     
@@ -31,17 +31,17 @@
         <div class="list-group text-center">
             {% if object_list %}
 
-            {% for promocion in object_list %}
+            {% for comite in object_list %}
             
             <li>
-            <a href="{% url 'promocionDetail' promocion.id %}" >{{promocion.nombre}}: ${{promocion.precio}} </a></li>    
+            <a>{{comite.nombre}}</a></li>    
                 
             {% endfor %}
             {% else %}
-                <p>No existen Promociones</p>
+                <p>No existen Comites</p>
             {% endif %}
 
-            <a href="{% url 'crearPromocion' evento.id %}" class="btn btn-lg btn-primary" role="but"> Crear Promocion</a>
+            <a href="{% url 'crearComite' evento.id %}" class="btn btn-lg btn-primary" role="but"> Crear Comite</a>
             
         </div>
     </div>

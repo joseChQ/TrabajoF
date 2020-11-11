@@ -23,17 +23,19 @@
 
 
     <div class="container py-5">
-        <div class="list-group text-center">
+        
 
             {% for ambiente in object_list %}
-            <a>{{ambiente.id}}: {{ambiente.descripcion}}</a>
+            <a>{{ambiente.id}}: {{ambiente.descripcion}}  </a>
+            <a href="{% url 'updateAmbiente' ambiente.id %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Modificar  </a>
+            <a href="{% url 'eliminarAmbiente' ambiente.id %}" class="glyphicon glyphicon-trash" role="button" aria-pressed="true"></a>
             {% endfor %}
 
             <a href="{% url 'crearAmbiente' %}" class="list-group-item list-group-item-info active">
                 Crea ambiente
-            </a>
+            </a>   
 
-        </div>
+        
     </div>
 
 

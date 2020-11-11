@@ -23,4 +23,5 @@ urlpatterns = [
     path('gMaterial/', include('gMaterial.urls')),
     path('gAmbiente/', include('gAmbiente.urls')),
     path('gPromocion/', include('gPromocion.urls')),
+    path('gComite/', include('gComite.urls')),
 ]

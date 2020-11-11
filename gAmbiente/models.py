@@ -1,5 +1,6 @@
 from django.db import models
 class Ambiente(models.Model):
+    nombre = models.CharField(max_length = 40)
     descripcion = models.CharField(max_length = 40)
     aforo = models.IntegerField()
     puertasEscape = models.IntegerField()

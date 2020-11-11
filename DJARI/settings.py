@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'gReporte',
     'gAmbiente',
     'gPromocion',
+    'gComite',
     'accounts',
     'gMaterial',
 ]
