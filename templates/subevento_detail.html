@@ -1,81 +1,286 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <title>Events</title>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Conference project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <s src="https://ajax.googleap  is.com/ajax/libs/jquery/3.5.1/jquery.min.js"></s>
-    <s src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></s>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+    <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{%static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'plugins/OwlCarousel2-2.2.1/animate.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'styles/events.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'styles/events_responsive.css'%}">
+
+    <style>
+        .event_text {
+
+            color: rebeccapurple;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="container-fluid bg-primary py-5">
-        <h1 class="display-3">DJARI</h1>
-    </div>
-
-    <!-- Evento detalees -->
-    <!-- <div class="container py-5 text-center">
-
-        
-        <ul class="list-group text-white">
-            <li class="list-group-item"><p>{{evento.detalle}}</p></li>
-            <li class="list-group-item"><p>{{evento.fechaInicio}}</p></li>
-            <li class="list-group-item"><p>{{evento.fechaClausura}}</p></li>
-            <li class="list-group-item"><p>{{evento.ubicacion}}</p></li>
-        </ul>        
-    </div> -->
-
-    <!-- Subevento Detallees -->
-    <div class="container py-5 text-center">
-        <p class="h1 bg-primary" style="padding:10px;">{{subevento.nombre}}</p>
-        <ul class="list-group text-white">
-            <li class="list-group-item">
-                <p>{{subevento.fechaInicio}}</p>
-            </li>
-            <li class="list-group-item">
-                <p>{{subevento.fechaClausura}}</p>
-            </li>
-        </ul>
-
-        <!-- agreguen todos sus detalles plox -->
+    <div class="super_container">
 
 
+        <!-- Home -->
 
-        <div class="container py-5 text-center">
-            <p class="h1 bg-primary" style="padding: 10px; margin-bottom: 30px;">Lista actividades</p>
-        </div>
-        <div class="container py-5" style="margin-top: 30px;">
-            <div class="list-group text-center">
-                {% if object_list %}
+        <div class="home">
+            <div class="parallax_background parallax-window" data-parallax="scroll"
+                data-image-src="{%static 'images/events.jpg'%}" data-speed="0.8"></div>
 
-                {% for actividad in object_list %}
-                <a class="list-group-item list-group-item-action"
-                    href="{% url 'actividadDetail' actividad.id %}">{{actividad.nombre}}</a>
-                {% endfor %}
+            <!-- Header -->
 
-                {% else %}
-                <p>No existen actividades</p>
-                {% endif %}
+            <header class="header" id="header">
+                <div>
+                    <div class="header_top">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div
+                                        class="header_top_content d-flex flex-row align-items-center justify-content-start">
+                                        <div>
+                                            <a href="#">
+                                                <div
+                                                    class="logo_container d-flex flex-row align-items-start justify-content-start">
+                                                    <div class="logo_image">
+                                                        <div><img src="{%static 'images/DJARI_LOGO.jpg' %}" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="logo_content">
+                                                        <div id="logo_text" class="logo_text logo_text_not_ie">Gestor de
+                                                            Eventos DJARI</div>
+                                                        <div class="logo_sub">Arequipa 2020</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header_nav" id="header_nav_pin">
+                        <div class="header_nav_inner">
+                            <div class="header_nav_container">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+
+                                            <div
+                                                class="header_nav_content d-flex flex-row align-items-center justify-content-start">
+                                                <nav class="main_nav">
+                                                    <ul>
+                                                        <li class="active"><a href="{% url 'evento' %}">Home</a></li>
+                                                        <li class="active"><a href="{% url 'evento' %}">Eventos</a></li>
+                                                        <li class="active"><a href="{% url 'evento' %}">SubEventos</a>
+                                                        </li>
+
+
+                                                    </ul>
+                                                </nav>
+
+                                                <div class="header_extra ml-auto">
+                                                    <!--<div class="header_search"><i class="fa fa-search" aria-hidden="true"></i></div>-->
+                                                    <div class="button header_button"><a href="#">Cerrar Session</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Detalles -->
+            <div class="home_content_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                                <div class="current_page">{{subevento.nombre}} : Actividades</div>
+                                <div class="breadcrumbs ml-auto">
+                                    <ul>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li class="active"><a href="{% url 'evento' %}">Eventos</a></li>
+                                        <li><a href="{% url 'ambiente' %}">Ambientes</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <a href="{% url 'crearActividad' subevento.id %}" class="btn btn-lg btn-primary" role="but"> Crear Actividad</a>
+
+
+        <!--Boton para crear una nueva actividad-->
+        <div class="event_buttons"></div>
+        <div class="btn btn-primary btn-lg btn-block"
+            style="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
+            <a style="color:white;" href="{% url 'crearActividad' subevento.id %}">CREAR ACTVIDAD</a></div>
+
     </div>
 
 
-    <!--     
-    <ul>
-        {% if object_list %}
 
-        {% for actividad in object_list %}
-        <li><a href="{% url 'actividadDetail' actividad.id %}">{{actividad.nombre}}</a></li>
-        {% endfor %}
+    <!-- Actividades -->
 
-        {% else %}
-        <p>No existen actividades</p>
-        {% endif %}
-    </ul> -->
+    <div class="events">
+        <div class="container">
+            <div class="row">
+                <div class="col">
 
+
+                    <!-- Cartas de Subevento-->
+                    <div class="card-deck">
+
+
+                        {% for actividad in object_list %}
+
+                        <div class="card text-center border-dark mb-3" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Nombre: {{actividad.nombre}}</h5>
+
+
+                            </div>
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Fecha Inicio : {{actividad.fechaInicio}}</li>
+                                <li class="list-group-item">Fecha Fin : {{actividad.fechaClausura}}</li>
+                            </ul>
+
+                            <div class="card-body">
+                                <div class="btn-group" role="group">
+                                    <button class="btn btn-primary btn-lg " disabled>
+                                        <a href="" role="button" style="color:white;">Editar</a>
+                                        <br>
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+
+                                    <button class="btn btn-success btn-lg ">
+                                        <a href="{% url 'actividadDetail' actividad.id %}" role="button" style="color:white;">Ver</a>
+                                        <br>
+                                        <i class="fa fa-wpexplorer"></i>
+                                    </button>
+
+                                    <button class="btn btn-danger btn-lg " disabled>
+                                        <a role="button" style="color:white;" aria-pressed="true">Click</a>
+                                        <br>
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Eventss -->
+
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+        <div class="footer_content">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Footer Column -->
+                    <div class="col-lg-12 footer_col">
+                        <div class="footer_about">
+                            <div>
+                                <a href="#">
+                                    <div class="logo_container d-flex flex-row align-items-start justify-content-start">
+                                        <div class="logo_image">
+                                            <div><img src="{%static 'images/DJARI_LOGO.jpg' %}" alt=""></div>
+                                        </div>
+                                        <div class="logo_content">
+                                            <div id="logo_text" class="logo_text logo_text_not_ie">Gestor de Eventos
+                                                DJARI</div>
+                                            <div class="logo_sub">Arequipa 2020</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="footer_about_text">
+                                <p>DJARI es un entorno para gestionar eventos en general, facilitando sus
+                                    funcionalidades y interacciones. Ademas contamos con paquetes para todos los
+                                    usuarios extendiendo tanto la version gratis como la version premiun que ofrece
+                                    otras cualidades como mas emojis en los eventos no hay al crear un evento y
+                                    mucho mas gracias por comprar DJARI tan solo por $53</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_extra">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div
+                            class="footer_extra_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-start justify-content-center">
+                            <div class="footer_social">
+                                <div class="footer_social_title">Siguenos para mas informacion en:</div>
+                                <ul class="footer_social_list">
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="footer_extra_right ml-lg-auto text-lg-right">
+                                <div class="footer_extra_links">
+                                    <ul>
+                                        <li><a href="#">Privacy</a></li>
+                                    </ul>
+                                </div>
+                                <div class="copyright">
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;<script>
+                                        document.write(new Date().getFullYear());
+                                    </script> Todos los derechos reservados para DJARI <i class="fa fa-heart-o"
+                                        aria-hidden="true"></i> por <a href="https://colorlib.com"
+                                        target="_blank">equipo de DJARI</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+
+    <script src="{%static 'styles/bootstrap4/popper.js' %}"></script>
+    <script src="{%static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{%static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+    <script src="{%static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+    <script src="{%static 'plugins/easing/easing.js' %}"></script>
+    <script src="{%static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+    <script src="{%static 'js/events.js' %}"></script>
 </body>
+
+</html>
