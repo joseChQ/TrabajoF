@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container-fluid bg-primary py-5">
+        <h1 class="display-3">DJARI</h1>
+    </div>
+
+    <div class="container py-5 text-center">
+
+        <p class="h1 bg-primary" style="padding:10px;">{{comite.nombre}}</p>
+        <ul class="list-group text-white">
+            <p>Detalles</p>
+            <li class="list-group-item"><p>{{comite.descripcion}}</p></li>
+        </ul>        
+    </div>
+
+
+    <div class="container py-5 text-center">
+        <p class="h1 bg-primary" style="padding: 10px;">Lista Personal</p>
+    </div>
+
+
+    <div class="container py-5" style="margin-top: 30px;">
+        <div class="list-group text-center">
+        {% if object_list %}
+        {% for personal in object_list %}
+        <a class="list-group-item list-group-item-action">{{personal.nombre}}</a>
+        <!-- mostremos esta lista con mas detalles -->
+        {% endfor %}
+        {% else %}
+        <p>No existe Personal</p>
+        {% endif %}
+        <a href="{% url 'crearPersonal' comite.id %}" class="btn btn-lg btn-primary" role="but"> Crear Personal</a>
+    </div>
+</div>
+
+</body>
+
+</html>

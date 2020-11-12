@@ -27,6 +27,8 @@
 
             {% for material in object_list %}
             <a>{{material.nombre}}</a>
+            <a href="{% url 'updateMaterial' material.id %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Modificar</a>
+            <a href="{% url 'eliminarMaterial' material.id %}" class="glyphicon glyphicon-trash" role="button" aria-pressed="true"></a>
             {% endfor %}
 
             <a href="{% url 'crearMaterial' %}" class="list-group-item list-group-item-info active">

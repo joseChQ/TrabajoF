@@ -33,16 +33,15 @@
 
             {% for comite in object_list %}
             
-            <li>
-            <a>{{comite.nombre}}</a></li>    
+            <li><a href="{% url 'comiteDetail' comite.id %}">{{comite.nombre}}</a>
+            <a href="{% url 'updateComite' comite.id %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Modificar  </a> 
+            <a href="{% url 'eliminarComite' comite.id %}" class="glyphicon glyphicon-trash" role="button" aria-pressed="true"></a> </li>
                 
             {% endfor %}
             {% else %}
                 <p>No existen Comites</p>
             {% endif %}
-
-            <a href="{% url 'crearComite' evento.id %}" class="btn btn-lg btn-primary" role="but"> Crear Comite</a>
-            
+            <a href="{% url 'crearComite' evento.id %}" class="btn btn-lg btn-primary" role="but"> Crear Comite</a>    
         </div>
     </div>
 </body>
