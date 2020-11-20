@@ -13,10 +13,13 @@ class Form_Ambiente(forms.ModelForm):
         ]
         labels = {
             'nombre' : 'Nombre del Ambiente',
-            'descripcion' : 'Descripcion',
+            'descripcion' : 'Descripción',
             'aforo' : 'Aforo',
-            'puertasEscape' : 'Cantidad de puertas',
+            'puertasEscape' : 'Cantidad de puertas de escape ',
         }
         widgets = {      
-            'descripcion' : forms.TextInput(attrs={'placeholder':'descripcion ejemplo','class':'form-control'}),
+            'nombre' : forms.TextInput(attrs={'class':'form-control'}),
+            'descripcion' : forms.TextInput(attrs={'class':'form-control'}),
+            'aforo' : forms.NumberInput(attrs={'class':'form-control'}),
+            'puertasEscape' : forms.NumberInput(attrs={'class':'form-control'}),
         }

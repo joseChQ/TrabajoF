@@ -79,10 +79,8 @@
                                                     <ul>
                                                         <li class="active"><a href="{% url 'evento' %}">Home</a></li>
                                                         <li class="active"><a href="{% url 'evento' %}">Eventos</a></li>
-                                                        <li class="active"><a href="{% url 'evento' %}">SubEventos</a>
-                                                        </li>
-
-
+                                                        <li><a href="{% url 'material' %}">Materiales</a></li>
+                                                        <li><a href="{% url 'ambiente' %}">Ambientes</a></li>
                                                     </ul>
                                                 </nav>
 
@@ -111,9 +109,10 @@
                                 <div class="current_page">{{actividad.nombre}} : Ponentes</div>
                                 <div class="breadcrumbs ml-auto">
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li class="active"><a href="{% url 'evento' %}">Eventos</a></li>
-                                        
+                                        <li><a href="{% url 'evento' %}">Home</a></li>
+                                        <li>Eventos</li>
+                                        <li>Subeventos</li>
+                                        <li>Actividad</li>
                                     </ul>
                                 </div>
                             </div>

@@ -145,7 +145,7 @@ h6::selection
 }
 .form-control
 {
-	color: #db5246;
+	color: gray;
 }
 section
 {
@@ -229,7 +229,8 @@ section
 }
 .parallax-window
 {
-    min-height: 400px;
+    min-height: 400px; 
+    /* min-height: 100px; */
     background: transparent;
 }
 .parallax_background
@@ -239,6 +240,8 @@ section
 	left: 0;
 	width: 100%;
 	height: 100%;
+	
+
 }
 .background_image
 {
@@ -1191,4 +1194,8 @@ section
 	font-weight: 500;
 	color: #bbbbbb;
 	margin-top: 7px;
+}
+
+.test{
+	background-color: green;
 }

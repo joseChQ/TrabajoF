@@ -17,8 +17,9 @@ class Form_Comite(forms.ModelForm):
             'Descripcion' : 'Descripcion',
         }
         widgets = {
-            'nombre' : forms.TextInput(attrs={'placeholder':'compite ejemplo','class':'form-control'}),
-            'url' : forms.TextInput(attrs={'placeholder':'no es obligatorio','class':'form-control'}), 
+            'nombre' : forms.TextInput(attrs={'class':'form-control'}),
+            'url' : forms.TextInput(attrs={'placeholder':'opcional','class':'form-control'}), 
+            'descripcion' : forms.TextInput(attrs={'class':'form-control'}), 
         }
 
 class Form_Personal(forms.ModelForm):
@@ -39,7 +40,9 @@ class Form_Personal(forms.ModelForm):
             'correoElectronico' : 'Correo Electronico',
         }
         widgets = {
-            'nombre' : forms.TextInput(attrs={'placeholder':'nombre ejemplo','class':'form-control'}),
-            'apellido' : forms.TextInput(attrs={'placeholder':'apellido ejemplo','class':'form-control'}),
-            'DNI' : forms.TextInput(attrs={'placeholder':'########','class':'form-control'}),
+            'nombre' : forms.TextInput(attrs={'placeholder':'nombres','class':'form-control'}),
+            'apellido' : forms.TextInput(attrs={'placeholder':'apellidos','class':'form-control'}),
+            'DNI' : forms.TextInput(attrs={'placeholder':'########','class':'form-control','maxlength':'2'}),
+            'telefono' : forms.TextInput(attrs={'placeholder':'########','class':'form-control','maxlength':'2'}),
+            'correoElectronico' : forms.TextInput(attrs={'type':'email','placeholder':'djari..@gmail.com','class':'form-control'}),
         }

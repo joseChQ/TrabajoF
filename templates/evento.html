@@ -16,18 +16,24 @@
     <link rel="stylesheet" type="text/css" href="{%static 'styles/events.css'%}">
     <link rel="stylesheet" type="text/css" href="{%static 'styles/events_responsive.css'%}">
 
+    
+
 </head>
 
 <body>
 
-    <div class="super_container">
-
+    <div class="super_container"></div>
+        <!-- <img style="width:50%; height:50%;" src="{%static 'images/contact.jpg'%}" >   -->
 
         <!-- Home -->
-
+       
         <div class="home">
-            <div class="parallax_background parallax-window" data-parallax="scroll"
-                data-image-src="{%static 'images/events.jpg'%}" data-speed="0.8"></div>
+            <div class="parallax_background parallax-window " 
+            data-parallax="scroll"
+            data-image-src="{%static 'images/events.jpg'%}"
+            
+                data-speed="0.8">
+            </div>
 
             <!-- Header -->
 
@@ -66,7 +72,7 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col">
-                                            
+
                                             <div
                                                 class="header_nav_content d-flex flex-row align-items-center justify-content-start">
                                                 <nav class="main_nav">
@@ -83,7 +89,7 @@
                                                     <div class="button header_button"><a href="#">Cerrar Session</a>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -97,13 +103,13 @@
             <div class="home_content_container">
                 <div class="container">
                     <div class="row">
-                        <div class="col">
-                            <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                        <div class="col ">
+                            <div class="home_content d-flex flex-row align-items-end justify-content-start" >
                                 <div class="current_page">Lista de eventos</div>
                                 <div class="breadcrumbs ml-auto">
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li>Events</li>
+                                        <li><a href="{% url 'evento' %}">Home</a></li>
+                                        <li>Eventos</li>
                                     </ul>
                                 </div>
                             </div>
@@ -117,161 +123,160 @@
 
         <!--Boton para crear nuevo boton-->
         <div class="event_buttons"></div>
-            <div class="btn btn-primary btn-lg btn-block" style
-            ="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
+        <div class="btn btn-primary btn-lg btn-block"
+            style="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
             <a style="color:white;" href="{% url 'crearEvento' %}">CREAR EVENTO</a></div>
+    </div>
+
+    <!-- Events -->
+
+    <div class="events">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+
+
+                    {% for evento in object_list %}
+
+                    <div class="event">
+                        <div class="row row-lg-eq-height">
+                            <div class="col-lg-6 event_col">
+                                <div class="event_image_container">
+                                    <div class="background_image"
+                                        style="background-image:url({%static 'images/event_9.jpg' %})"></div>
+                                    <div class="date_container">
+                                        <a href="#">
+                                            <span
+                                                class="date_content d-flex flex-column align-items-center justify-content-center">
+                                                <div class="date_day">{{ evento.fechaInicio|date:"d" }}</div>
+                                                <div class="date_month">{{ evento.fechaInicio|date:"M" }}</div>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 event_col">
+                                <div class="event_content">
+                                    <div class="event_title">{{evento.nombre}}</div>
+                                    <div class="event_location">@ Arequipa-Peru</div>
+                                    <div class="event_text">
+                                        <p style="color: #329fec;">Nota : {{evento.detalle}}</p>
+                                        <p style="color: #329fec;">Fecha Inicio :{{evento.fechaInicio}}</p>
+                                        <p style="color: #329fec;">Fecha Clausura :{{evento.fechaClausura}} </p>
+                                        <p style="color: #329fec;">Ubicación :{{evento.ubicacion}} </p>
+
+                                        <br>
+                                    </div>
+                                    <!-- Event Speaker -->
+                                    <div class="event_speaker d-flex flex-row align-items-center justify-content-start">
+                                        <div>
+                                            <div class="event_speaker_image"><img
+                                                    src="{%static 'images/DJARI_LOGO.jpg ' %}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="event_speaker_content">
+                                            <div class="event_speaker_name">DJARI</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="event_buttons">
+                                    <div class="button event_button event_button_1"><a href="#">Adaptar</a></div>
+                                    <div class="button_2 event_button event_button_2"><a
+                                            href="{% url 'eventoDetail' evento.id    %}">Ver</a></div>
+                                    <div class="button_2 event_button event_button_2"><a href="#">Editar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {% endfor %}
+
+
+
+
+
+
+
+                </div>
+            </div>
         </div>
+    </div>
 
-        <!-- Events -->
+    <!-- Footer -->
 
-        <div class="events">
+    <footer class="footer">
+        <div class="footer_content">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Footer Column -->
+                    <div class="col-lg-12 footer_col">
+                        <div class="footer_about">
+                            <div>
+                                <a href="#">
+                                    <div class="logo_container d-flex flex-row align-items-start justify-content-start">
+                                        <div class="logo_image">
+                                            <div><img src="{%static 'images/DJARI_LOGO.jpg' %}" alt=""></div>
+                                        </div>
+                                        <div class="logo_content">
+                                            <div id="logo_text" class="logo_text logo_text_not_ie">Gestor de Eventos
+                                                DJARI</div>
+                                            <div class="logo_sub">Arequipa 2020</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="footer_about_text">
+                                <p>DJARI es un entorno para gestionar eventos en general, facilitando sus
+                                    funcionalidades y interacciones. Ademas contamos con paquetes para todos los
+                                    usuarios extendiendo tanto la version gratis como la version premiun que ofrece
+                                    otras cualidades como mas emojis en los eventos no hay al crear un evento y
+                                    mucho mas gracias por comprar DJARI tan solo por $53</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_extra">
             <div class="container">
                 <div class="row">
                     <div class="col">
-
-
-
-                        {% for evento in object_list %}
-                    
-                        <div class="event">
-                            <div class="row row-lg-eq-height">
-                                <div class="col-lg-6 event_col">
-                                    <div class="event_image_container">
-                                        <div class="background_image"
-                                            style="background-image:url({%static 'images/event_9.jpg' %})"></div>
-                                        <div class="date_container">
-                                            <a href="#">
-                                                <span
-                                                    class="date_content d-flex flex-column align-items-center justify-content-center">
-                                                    <div class="date_day">{{ evento.fechaInicio|date:"d" }}</div>
-                                                    <div class="date_month">{{ evento.fechaInicio|date:"M" }}</div>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
+                        <div
+                            class="footer_extra_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-start justify-content-center">
+                            <div class="footer_social">
+                                <div class="footer_social_title">Siguenos para mas informacion en:</div>
+                                <ul class="footer_social_list">
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="footer_extra_right ml-lg-auto text-lg-right">
+                                <div class="footer_extra_links">
+                                    <ul>
+                                        <li><a href="#">Privacy</a></li>
+                                    </ul>
                                 </div>
-                                <div class="col-lg-6 event_col">
-                                    <div class="event_content">
-                                        <div class="event_title">{{evento.nombre}}</div>
-                                        <div class="event_location">@ Arequipa-Peru</div>
-                                        <div class="event_text">
-                                            <p style="color: #329fec;">Nota : {{evento.detalle}}</p>
-                                            <p style="color: #329fec;">Fecha Inicio :{{evento.fechaInicio}}</p>
-                                            <p style="color: #329fec;">Fecha Clausura :{{evento.fechaClausura}}  </p>
-                                            <p style="color: #329fec;">Ubicación :{{evento.ubicacion}}  </p>
-                                            
-                                            <br>
-                                        </div>
-                                            <!-- Event Speaker -->
-                                            <div
-                                                class="event_speaker d-flex flex-row align-items-center justify-content-start">
-                                                <div>
-                                                    <div class="event_speaker_image"><img
-                                                            src="{%static 'images/DJARI_LOGO.jpg ' %}" alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="event_speaker_content">
-                                                    <div class="event_speaker_name">DJARI</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="event_buttons">
-                                            <div class="button event_button event_button_1"><a href="#">Adaptar</a></div>
-                                            <div class="button_2 event_button event_button_2"><a  href="{% url 'eventoDetail' evento.id    %}">Ver</a></div>
-                                            <div class="button_2 event_button event_button_2"><a href="#">Etdiiar</a>
-                                        </div>
-                                    </div>
+                                <div class="copyright">
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;<script>
+                                        document.write(new Date().getFullYear());
+                                    </script> Todos los derechos reservados para DJARI <i class="fa fa-heart-o"
+                                        aria-hidden="true"></i> por <a href="https://colorlib.com"
+                                        target="_blank">equipo de DJARI</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 </div>
                             </div>
                         </div>
-
-
-                        {% endfor %}
-                        
-                   
-
-
-                        
-
-
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Footer -->
-
-        <footer class="footer">
-            <div class="footer_content">
-                <div class="container">
-                    <div class="row">
-
-                        <!-- Footer Column -->
-                        <div class="col-lg-12 footer_col">
-                            <div class="footer_about">
-                                <div>
-                                    <a href="#">
-                                        <div
-                                            class="logo_container d-flex flex-row align-items-start justify-content-start">
-                                            <div class="logo_image">
-                                                <div><img src="{%static 'images/DJARI_LOGO.jpg' %}" alt=""></div>
-                                            </div>
-                                            <div class="logo_content">
-                                                <div id="logo_text" class="logo_text logo_text_not_ie">Gestor de Eventos
-                                                    DJARI</div>
-                                                <div class="logo_sub">Arequipa 2020</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="footer_about_text">
-                                    <p>DJARI es un entorno para gestionar eventos en general, facilitando sus
-                                        funcionalidades y interacciones. Ademas contamos con paquetes para todos los
-                                        usuarios extendiendo tanto la version gratis como la version premiun que ofrece
-                                        otras cualidades como mas emojis en los eventos no hay al crear un evento y
-                                        mucho mas gracias por comprar DJARI tan solo por $53</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer_extra">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div
-                                class="footer_extra_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-start justify-content-center">
-                                <div class="footer_social">
-                                    <div class="footer_social_title">Siguenos para mas informacion en:</div>
-                                    <ul class="footer_social_list">
-                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="footer_extra_right ml-lg-auto text-lg-right">
-                                    <div class="footer_extra_links">
-                                        <ul>
-                                            <li><a href="#">Privacy</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="copyright">
-                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                        Copyright &copy;<script>
-                                            document.write(new Date().getFullYear());
-                                        </script> Todos los derechos reservados para DJARI <i class="fa fa-heart-o"
-                                            aria-hidden="true"></i> por <a href="https://colorlib.com"
-                                            target="_blank">equipo de DJARI</a>
-                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+    </footer>
 
     </div>
 

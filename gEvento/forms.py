@@ -13,7 +13,7 @@ class Form_Evento(forms.ModelForm):
             'ubicacion',
         ]
         labels = {
-            'nombre' : 'Nombre del Evento',
+            'nombre' : 'Nombre de Evento',
             'detalle' : 'Detalle del Evento',
             'fechaInicio' : 'Fecha de Inicio',
             'fechaClausura' : 'Fecha de Clausura',
@@ -59,7 +59,7 @@ class Form_Subevento(forms.ModelForm):
             # 'fechaInicio': forms.TextInput(attrs={'type':'date'}),
             # 'fechaClausura': forms.TextInput(attrs={'type':'date'}),
 
-            'nombre' : forms.TextInput(attrs={'placeholder':'subevento ejemplo','class':'form-control'}),
+            'nombre' : forms.TextInput(attrs={'class':'form-control'}),
             'fechaInicio': forms.TextInput(attrs={'type':'date','class':'form-control'}),
             'fechaClausura': forms.TextInput(attrs={'type':'date','class':'form-control'}),
         }

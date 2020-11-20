@@ -179,6 +179,12 @@
                         <div class="col">
                             <div class="home_content d-flex flex-row align-items-end justify-content-start">
                                 <div class="current_page">Crear Material</div>
+                                <div class="breadcrumbs ml-auto">
+                                    <ul>
+                                        <li><a href="{% url 'evento' %}">Home</a></li>
+                                        <li>Material</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -189,7 +195,7 @@
 
 
         <!-- Relleno -->
-
+        <!-- {{ form.as_p }} -->
         <div class="events">
             <div class="container">
                 <div class="row" style="text-align:center;">
@@ -198,7 +204,7 @@
                         {% csrf_token %}
                         {{ form.as_p }}
                         <br>
-                        <input class="btn btn-primary" type="submit" value="Save">
+                        <input class="btn btn-primary" type="submit" value="Crear">
                     </form>
 
                 </div>

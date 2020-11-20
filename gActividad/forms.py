@@ -13,7 +13,7 @@ class Form_Actividad(forms.ModelForm):
             'horaFin',
         ]
         labels = {
-            'nombre' : 'Nombre del Evento',
+            'nombre' : 'Nombre de la Actividad',
             'horaInicio' : 'Hora de Inicio',
             'horaFin' : 'Hora de Fin',
             'fechaInicio' : 'Fecha de Inicio',

@@ -79,10 +79,8 @@
                                                     <ul>
                                                         <li class="active"><a href="{% url 'evento' %}">Home</a></li>
                                                         <li class="active"><a href="{% url 'evento' %}">Eventos</a></li>
-                                                        <li class="active"><a href="{% url 'evento' %}">SubEventos</a>
-                                                        </li>
-
-
+                                                        <li><a href="{% url 'material' %}">Materiales</a></li>
+                                                        <li><a href="{% url 'ambiente' %}">Ambientes</a></li>
                                                     </ul>
                                                 </nav>
 
@@ -110,11 +108,14 @@
                             <div class="home_content d-flex flex-row align-items-end justify-content-start">
                                 <div class="current_page">{{subevento.nombre}} : Actividades</div>
                                 <div class="breadcrumbs ml-auto">
-                                    <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li class="active"><a href="{% url 'evento' %}">Eventos</a></li>
-                                        <li><a href="{% url 'ambiente' %}">Ambientes</a></li>
-                                    </ul>
+                                    <div class="breadcrumbs ml-auto">
+                                        <ul>
+                                            <li><a href="{% url 'evento' %}">Home</a></li>
+                                            <li>Eventos</li>
+                                            <li>Subeventos</li>
+                                            <li>Actividad</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -164,13 +165,14 @@
                             <div class="card-body">
                                 <div class="btn-group" role="group">
                                     <button class="btn btn-primary btn-lg " disabled>
-                                        <a href="" role="button" style="color:white;">Editar</a>
+                                        <a  role="button" style="color:white;">Editar</a>
                                         <br>
                                         <i class="fa fa-edit"></i>
                                     </button>
 
                                     <button class="btn btn-success btn-lg ">
-                                        <a href="{% url 'actividadDetail' actividad.id %}" role="button" style="color:white;">Ver</a>
+                                        <a href="{% url 'actividadDetail' actividad.id %}" role="button"
+                                            style="color:white;">Ver</a>
                                         <br>
                                         <i class="fa fa-wpexplorer"></i>
                                     </button>

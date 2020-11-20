@@ -150,17 +150,10 @@
                                                 class="header_nav_content d-flex flex-row align-items-center justify-content-start">
                                                 <nav class="main_nav">
                                                     <ul>
-                                                        <!--<li class="active"><a href="{% url 'evento' %}">Home</a></li>
-                                                        <li><a href="{% url 'evento' %}">Eventos</a></li>
-                                                        <li class="active"><a href="{% url 'material' %}">Materiales</a>
-                                                        </li>
-                                                        <li><a href="{% url 'ambiente' %}">Ambientes</a></li>-->
                                                         <li class="active"><a href="{% url 'evento' %}">Home</a></li>
                                                         <li class="active"><a href="{% url 'evento' %}">Eventos</a></li>
-                                                        <li class="active"><a href="{% url 'evento' %}">SubEventos</a>
-                                                        </li>
-                                                        <!-- <li><a href="news.html">Ponentes</a></li> -->
-                                                        <!--<li><a href="contact.html">Material</a></li>-->
+                                                        <li><a href="{% url 'material' %}">Materiales</a></li>
+                                                        <li><a href="{% url 'ambiente' %}">Ambientes</a></li>
                                                     </ul>
                                                 </nav>
                                                 <div class="header_extra ml-auto">
@@ -203,7 +196,7 @@
                         {% csrf_token %}
                         {{ form.as_p }}
                         <br>
-                        <input class="btn btn-primary" type="submit" value="Save">
+                        <input class="btn btn-primary" type="submit" value="Crear">
                     </form>
 
                 </div>

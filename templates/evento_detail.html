@@ -79,7 +79,7 @@
                                                     <ul>
                                                         <li class="active"><a href="{% url 'evento' %}">Home</a></li>
                                                         <li class="active"><a href="{% url 'evento' %}">Eventos</a></li>
-                                                        <li ><a href="{% url 'comite' evento.id    %}">Comite</a></li>
+                                                        <li ><a href="{% url 'comite' evento.id    %}">Comité</a></li>
                                                         <li><a href="{% url 'promocion' evento.id    %}">Promociones</a>
                                                         </li>
                                                         <li><a href="{% url 'material' %}">Materiales</a></li>
@@ -111,8 +111,9 @@
                                 <div class="current_page">{{evento.nombre}} : Subeventos</div>
                                 <div class="breadcrumbs ml-auto">
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li>Events</li>
+                                        <li><a href="{% url 'evento' %}">Home</a></li>
+                                        <li>Eventos</li>
+                                        <li>Subeventos</li>
                                     </ul>
                                 </div>
                             </div>
@@ -149,7 +150,7 @@
 
                         <div class="card text-center border-dark mb-3" style="width: 18rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Nombre: {subevento.nombre}</h5>
+                                <h5 class="card-title">Nombre: {{subevento.nombre}}</h5>
                                 <!-- <p class="card-text">Descripcion: {{subevento.descripcion}}</p> -->
 
                             </div>
@@ -169,7 +170,7 @@
                                         <i class="fa fa-edit"></i>
                                     </button>
 
-                                    <button class="btn btn-success btn-lg ">
+                                    <button class="btn btn-success btn-lg " >
                                         <a href="{% url 'subeventoDetail' subevento.id %}" role="button"
                                             style="color:white;" >Ver</a>
                                         <br>
@@ -182,6 +183,7 @@
                                         <br>
                                         <i class="fa fa-trash"></i>
                                     </button>
+
                                 </div>
                             </div>
 

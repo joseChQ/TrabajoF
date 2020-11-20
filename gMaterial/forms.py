@@ -16,5 +16,8 @@ class Form_Material(forms.ModelForm):
             'costo' : 'Costo',
         }
         widgets = {      
-            'nombre' : forms.TextInput(attrs={'placeholder':'material ejemplo','class':'form-control'}),
+            'nombre' : forms.TextInput(attrs={'class':'form-control'}),
+            'stock' : forms.NumberInput(attrs={'class':'form-control'}),
+            'costo' : forms.NumberInput(attrs={'class':'form-control', 'step':'any'}),
+            
         }

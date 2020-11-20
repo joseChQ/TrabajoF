@@ -17,6 +17,8 @@ class Form_Promocion(forms.ModelForm):
             'precio' : 'Precio',
         }
         widgets = {
-            'nombre' : forms.TextInput(attrs={'placeholder':'promocion ejemplo','class':'form-control'}), 
+            'nombre' : forms.TextInput(attrs={'class':'form-control'}), 
+            'actividadesNecesarias' : forms.NumberInput(attrs={'class':'form-control'}),
+            'precio' : forms.NumberInput(attrs={'class':'form-control','step':'any'}),
         }
         
