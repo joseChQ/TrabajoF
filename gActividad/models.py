@@ -1,6 +1,8 @@
 from django.db import models
 from gEvento.models import Subevento
 from django.urls import reverse
+# Requisito: R-020
+# Modelo Relacional: MR-019
 class Actividad(models.Model):
     idSubevento = models.ForeignKey(Subevento, on_delete = models.CASCADE)
     nombre = models.CharField(max_length = 30)
@@ -13,6 +15,8 @@ class Actividad(models.Model):
     def __str__(self):
         return self.nombre
 
+# Requisito: R-029
+# Modelo Relacional: MR-008
 class Ponente(models.Model):
     actividades = models.ManyToManyField(
         Actividad,
