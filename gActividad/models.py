@@ -32,6 +32,8 @@ class Ponente(models.Model):
     def __str__(self):
         return self.nombre
 
+# Requisito: R-028
+# Modelo Relacional: MR-018
 class ActividadPonente(models.Model):
     actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE)
     ponente = models.ForeignKey(Ponente, on_delete=models.CASCADE)

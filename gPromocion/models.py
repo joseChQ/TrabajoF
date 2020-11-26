@@ -2,6 +2,9 @@ from django.db import models
 from gActividad.models import Actividad
 from gEvento.models import Evento
 # Create your models here.
+
+# Requisito: R-079
+# Modelo Relacional: MR-006
 class Promocion(models.Model):
     actividadesP = models.ManyToManyField(
         Actividad,
@@ -18,6 +21,7 @@ class Promocion(models.Model):
     def __str__(self):
         return self.nombre
 
+# Requisito: R-081
 class ActividadPromocion(models.Model):
     actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE)
     promocion = models.ForeignKey(Promocion, on_delete=models.CASCADE)
