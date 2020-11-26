@@ -7,6 +7,7 @@ from gActividad.models import Actividad
 from django.urls import reverse_lazy
 from .forms import Form_Comite, Form_Personal
 
+# Requisito: R-069
 class ComiteI(ListView):
     model = Comite
     template_name = 'comite.html'
@@ -20,6 +21,7 @@ class ComiteI(ListView):
         context['evento'] = self.evento
         return context
 
+# Requisito: R-069
 class CrearComite(CreateView):
     form_class = Form_Comite
     template_name = 'comite_new.html'
@@ -30,6 +32,7 @@ class CrearComite(CreateView):
         self.success_url = reverse_lazy('comite', args=[str(self.evento.id)])
         return super(CrearComite, self).form_valid(form)
 
+# Requisito: R-069
 class ComiteD(ListView):
     model = Personal
     template_name = 'comite_detail.html'
@@ -42,6 +45,7 @@ class ComiteD(ListView):
         context['comite'] = self.comite
         return context
 
+# Requisito: R-068
 class CrearPersonal(CreateView):
     form_class = Form_Personal
     template_name = 'personal_new.html'
@@ -54,6 +58,7 @@ class CrearPersonal(CreateView):
         self.success_url = reverse_lazy('comiteDetail', args=[str(self.comite.id)])
         return super().form_valid(form)
 
+# Requisito: R-072
 class UpdateComite(UpdateView):
     model = Comite
     fields = [
@@ -68,6 +73,7 @@ class UpdateComite(UpdateView):
         self.success_url = reverse_lazy('comite', args=[str(self.comite.idEvento.id)])
         return super(UpdateComite, self).form_valid(form)
 
+# Requisito: R-072
 class EliminarRedirect(RedirectView):
     pattern_name = 'comite'
     def get_redirect_url(self, *args, **kwargs):

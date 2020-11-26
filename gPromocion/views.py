@@ -7,6 +7,8 @@ from gActividad.models import Actividad
 from django.urls import reverse_lazy
 from .forms import Form_Promocion
 
+
+# Requisito: R-079
 class PromocionI(ListView):
     model = Promocion
     template_name = 'promocion.html'
@@ -19,6 +21,7 @@ class PromocionI(ListView):
         context['evento'] = self.evento
         return context
 
+# Requisito: R-079
 class CrearPromocion(CreateView):
     form_class = Form_Promocion
     template_name = 'promocion_new.html'
@@ -29,6 +32,7 @@ class CrearPromocion(CreateView):
         self.success_url = reverse_lazy('promocion', args=[str(self.evento.id)])
         return super(CrearPromocion, self).form_valid(form)
 
+# Requisito: R-079
 class PromocionD(ListView):
     model = Actividad
     template_name = 'promocion_detail.html'
@@ -41,6 +45,7 @@ class PromocionD(ListView):
         context['promocion'] = self.promocion
         return context
 
+# Requisito: R-080
 class AsignarP(ListView):
     model = Actividad
     template_name = 'promocionA.html'
@@ -54,6 +59,7 @@ class AsignarP(ListView):
         context['promocion'] = self.promocion
         return context
 
+# Requisito: R-081
 class AsignarRedirect(RedirectView):
     pattern_name = 'promocionDetail'
     def get_redirect_url(self, *args, **kwargs):

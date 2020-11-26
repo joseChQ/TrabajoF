@@ -4,7 +4,7 @@ from django.views.generic.base import RedirectView
 from .models import Ambiente
 from django.urls import reverse_lazy
 from .forms import Form_Ambiente
-
+# Requisito: R-020
 class HomePageView(ListView):
     model = Ambiente
     template_name = 'ambiente.html'
@@ -12,12 +12,13 @@ class HomePageView(ListView):
         tmp = Ambiente.objects.all()
         return tmp.exclude(visibilidad=False)
 
-
+# Requisito: R-020
 class CrearAmbiente(CreateView):
     form_class = Form_Ambiente
     template_name = 'ambiente_new.html'
     success_url = reverse_lazy('ambiente')
 
+# Requisito: R-018
 class UpdateAmbiente(UpdateView):
     model = Ambiente
     fields = ['nombre','descripcion',
@@ -25,7 +26,7 @@ class UpdateAmbiente(UpdateView):
             'puertasEscape',]
     template_name = 'ambiente_form.html'
     success_url = reverse_lazy('ambiente')
-
+# Requisito: R-018
 class EliminarRedirect(RedirectView):
     pattern_name = 'ambiente'
     def get_redirect_url(self, *args, **kwargs):

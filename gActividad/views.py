@@ -6,6 +6,7 @@ from gEvento.models import Subevento
 from django.urls import reverse_lazy
 from .forms import Form_Actividad, Form_Ponente
 
+# Requisito: R-027
 class ActividadI(ListView):
     model = Ponente
     template_name = 'actividad_detail.html'
@@ -18,6 +19,7 @@ class ActividadI(ListView):
         context['actividad'] = self.actividad
         return context
 
+# Requisito: R-029
 class CrearPonente(CreateView):
     form_class = Form_Ponente
     template_name = 'ponente_new.html'
@@ -30,6 +32,7 @@ class CrearPonente(CreateView):
         self.success_url = reverse_lazy('actividadDetail', args=[str(self.actividad.id)])
         return super().form_valid(form)
 
+# Requisito: R-027
 class CrearActividad(CreateView):
     form_class = Form_Actividad
     template_name = 'actividad_new.html'
@@ -38,7 +41,7 @@ class CrearActividad(CreateView):
         form.instance.idSubevento = self.subevento
         return super(CrearActividad, self).form_valid(form)
 
-
+# Requisito: R-029
 class ListaPonente(ListView):
     model = Ponente
     template_name = 'lista_ponente.html'
@@ -52,6 +55,7 @@ class ListaPonente(ListView):
         context['actividad'] = self.actividad
         return context
 
+# Requisito: R-028
 class AsignarRedirect(RedirectView):
     pattern_name = 'actividadDetail'
     def get_redirect_url(self, *args, **kwargs):
