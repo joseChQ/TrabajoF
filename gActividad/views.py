@@ -5,7 +5,7 @@ from .models import Actividad, Ponente
 from gEvento.models import Subevento
 from django.urls import reverse_lazy
 from .forms import Form_Actividad, Form_Ponente
-
+from django.contrib.auth.models import User
 # Requisito: R-027
 class ActividadI(ListView):
     model = Ponente

@@ -80,16 +80,20 @@ Requisito: R-006
                                                 class="header_nav_content d-flex flex-row align-items-center justify-content-start">
                                                 <nav class="main_nav">
                                                     <ul>
+                                                        
                                                         <li class="active"><a href="{% url 'evento' %}">Home</a></li>
                                                         <li class="active"><a href="{% url 'evento' %}">Eventos</a></li>
                                                         <li><a href="{% url 'material' %}">Materiales</a></li>
+                        
                                                         <li><a href="{% url 'ambiente' %}">Ambientes</a></li>
+                                                       
                                                     </ul>
                                                 </nav>
 
                                                 <div class="header_extra ml-auto">
                                                     <!--<div class="header_search"><i class="fa fa-search" aria-hidden="true"></i></div>-->
-                                                    <div class="button header_button"><a href="#">Cerrar Session</a>
+                                                    <div id="logo_text" class="logo_text logo_text_not_ie">{{user.username}}</div>
+                                                    <div class="button header_button"><a href="{% url 'logout' %}">Cerrar Session</a>
                                                     </div>
                                                 </div>
 
@@ -128,7 +132,9 @@ Requisito: R-006
         <div class="event_buttons"></div>
         <div class="btn btn-primary btn-lg btn-block"
             style="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
+        {% if permiso1 %}
             <a style="color:white;" href="{% url 'crearEvento' %}">CREAR EVENTO</a></div>
+        {% endif %}
     </div>
 
     <!-- Events -->
@@ -183,13 +189,18 @@ Requisito: R-006
                                         </div>
                                     </div>
                                 </div>
+                               
                                 <div class="event_buttons">
+                                    {% if permiso1 %}
                                     <div class="button event_button event_button_1"><a href="#">Adaptar</a></div>
+                                    {% endif %}
                                     <div class="button_2 event_button event_button_2"><a
                                             href="{% url 'eventoDetail' evento.id    %}">Ver</a></div>
-                                    <div class="button_2 event_button event_button_2"><a href="#">Editar</a>
-                                    </div>
+                                    {% if permiso1 %}
+                                    <div class="button_2 event_button event_button_2"><a href="#">Editar</a></div>
+                                    {% endif %}
                                 </div>
+                        
                             </div>
                         </div>
                     </div>
@@ -237,7 +248,7 @@ Requisito: R-006
                                     funcionalidades y interacciones. Ademas contamos con paquetes para todos los
                                     usuarios extendiendo tanto la version gratis como la version premiun que ofrece
                                     otras cualidades como mas emojis en los eventos no hay al crear un evento y
-                                    mucho mas gracias por comprar DJARI tan solo por $53</p>
+                                    mucho mas gracias por comprar DJARI tan solo por $99</p>
                             </div>
                         </div>
                     </div>

@@ -130,9 +130,11 @@ Requisito: R-006
 
         <!--Boton para crear nuevo boton-->
         <div class="event_buttons"></div>
+        {% if permiso1 %}
         <div class="btn btn-primary btn-lg btn-block"
             style="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
             <a style="color:white;" href="{% url 'crearSubevento' evento.id %}">CREAR SUB-EVENTO</a></div>
+        {% endif %}
     </div>
 
 
@@ -166,12 +168,14 @@ Requisito: R-006
                             <div class="card-body">
                                 <div class="btn-group" role="group">
                                     <!-- Editar -->
+                                    {% if permiso1 %}
                                     <button class="btn btn-primary btn-lg " disabled>
                                         <a  role="button"
                                             style="color:white;">Editar</a>
                                         <br>
                                         <i class="fa fa-edit"></i>
                                     </button>
+                                    {% endif %}
 
                                     <button class="btn btn-success btn-lg " >
                                         <a href="{% url 'subeventoDetail' subevento.id %}" role="button"
@@ -180,13 +184,14 @@ Requisito: R-006
                                         <i class="fa fa-wpexplorer"></i>
                                     </button>
 
+                                    {% if permiso1 %}
                                     <button class="btn btn-danger btn-lg " disabled>
                                         <a  role="button"
                                             style="color:white;" aria-pressed="true">Click</a>
                                         <br>
                                         <i class="fa fa-trash"></i>
                                     </button>
-
+                                    {% endif %}
                                 </div>
                             </div>
 

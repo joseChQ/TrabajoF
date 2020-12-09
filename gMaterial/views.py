@@ -4,6 +4,7 @@ from django.views.generic.base import RedirectView
 from gMaterial.models import Material
 from django.urls import reverse_lazy
 from .forms import Form_Material
+from django.contrib.auth.models import User
 # Requisito: R-034
 class HomePageView(ListView):
     model = Material

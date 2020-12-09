@@ -6,7 +6,7 @@ from gEvento.models import Subevento, Evento
 from gActividad.models import Actividad
 from django.urls import reverse_lazy
 from .forms import Form_Promocion
-
+from django.contrib.auth.models import User
 
 # Requisito: R-079
 class PromocionI(ListView):

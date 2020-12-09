@@ -1,27 +1,36 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, FormView
+from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 # Create your views here.
 
 # Base de datos
 from .models import Evento
 from .models import Subevento
-
+from gUsuarios.models import UserExtra
 # Tipos de formularios
 from .forms import Form_Evento, Form_Subevento
 from gActividad.models import Actividad
 from gPromocion.models import Promocion
+
 
 # from .models import *
 # Requisito: R-006
 class HomePageView(ListView):
     model = Evento
     template_name = 'evento.html'
+    def get_context_data(self, **kwargs):
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        Usercurrent = get_object_or_404(User,pk=self.request.user.id)
+        userX = get_object_or_404(UserExtra,idUser = Usercurrent)
+        context['permiso1'] = userX.permiso1
+        return context
 
 # Requisito: R-006
 class EventoI(ListView):
     model = Subevento
     template_name = 'evento_detail.html'
+    #UserCurrent = User.objects.filter(id=1)
     def get_queryset(self):
         self.evento = get_object_or_404(Evento, pk = self.kwargs['pk'])
         return Subevento.objects.filter(idEvento =self.evento)
@@ -29,8 +38,11 @@ class EventoI(ListView):
     def get_context_data(self, **kwargs):
         context = super(EventoI, self).get_context_data(**kwargs)
         promociones = Promocion.objects.filter(idEvento = self.evento)
+        Usercurrent = get_object_or_404(User,pk=self.request.user.id)
+        userX = get_object_or_404(UserExtra,idUser = Usercurrent)
         context['evento'] = self.evento
         context['promociones'] = promociones
+        context['permiso1'] = userX.permiso1
         return context
 
 # Requisito: R-006

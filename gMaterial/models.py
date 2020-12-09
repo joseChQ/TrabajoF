@@ -11,4 +11,7 @@ class Material(models.Model):
         return reverse('material')
     def __str__(self):
         return self.nombre
+
+class RegistroMaterial(models.Model):
+    MaterialID = models.ForeignKey(Evento, on_delete = models.CASCADE, blank=True, null=True)
     
