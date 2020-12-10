@@ -34,20 +34,20 @@
                     </span>
                     <span class="login100-form-title p-b-48">
                         
-                        <div><img  width="100" height="100" src="{%static 'images/DJARI_LOGO.jpg' %}" alt="">
-                        </div>
-                        <div><img  width="100" height="100" src="{%static 'images/carpincho.png' %}" alt="">
+                        <!-- <div><img  width="100" height="100" src="{%static 'images/DJARI_LOGO.jpg' %}" alt="">
+                        </div> -->
+                        <div><img  width="150" height="170" src="{%static 'images/carpincho3.png' %}" alt="">
                         </div>
                     </span>
 
 
                     <!-- Formularios -->
                     
-                    <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+                    <div class="wrap-input100 validate-input">
                         <!-- <input class="input100" type="text" name="email"> -->
                         {% csrf_token %}
                         {{ form.username }}
-                        <span class="focus-input100" data-placeholder="Email"></span>
+                        <span class="focus-input100" data-placeholder="User"></span>
                     </div>
 
                     
@@ -76,7 +76,7 @@
                             ¿No tienes cuenta?
                         </span>
 
-                        <a href="{% url 'signup' %}">SignUp</a>
+                        <a href="{% url 'signup' %}">Registrarse</a>
                     </div>
                 </form>
             </div>

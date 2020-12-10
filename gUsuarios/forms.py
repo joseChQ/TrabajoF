@@ -26,6 +26,6 @@ class CustomUserCreationForm(UserCreationForm):
             'first_name': forms.TextInput(attrs={'class':'input100'}),
             'last_name' : forms.TextInput(attrs={'class':'input100'}),
             'email' : forms.EmailInput(attrs={'class':'input100'}),
-            'password1' : forms.PasswordInput(attrs={'class':'input100'}),
-            'password2' : forms.PasswordInput(attrs={'class':'input100'}),
+            # 'password1' : forms.PasswordInput(attrs={'class':'input100'}),
+            # 'password2' : forms.PasswordInput(attrs={'class':'input100'}),
         }
