@@ -10,12 +10,12 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView, CreateView, UpdateView
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm,FormularioLogin
 from .models import UserExtra
 
 class Login(FormView):
     template_name = "login.html"
-    form_class = AuthenticationForm
+    form_class = FormularioLogin
     success_url = reverse_lazy('evento')
 
     @method_decorator(csrf_protect)
