@@ -19,10 +19,9 @@ from gPromocion.models import Promocion
 class HomePageView(ListView):
     model = Evento
     template_name = 'evento.html'
-
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
-        Usercurrent = get_object_or_404(User,pk=self.request.user.id)
+        Usercurrent = get_object_or_404(User, pk=self.request.user.id)
         userX = get_object_or_404(UserExtra,idUser = Usercurrent)
         context['permiso1'] = userX.permiso1
         return context
