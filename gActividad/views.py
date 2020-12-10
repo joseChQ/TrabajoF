@@ -6,6 +6,7 @@ from gEvento.models import Subevento
 from django.urls import reverse_lazy
 from .forms import Form_Actividad, Form_Ponente
 from django.contrib.auth.models import User
+from gUsuarios.models import UserExtra
 # Requisito: R-027
 class ActividadI(ListView):
     model = Ponente
@@ -16,6 +17,9 @@ class ActividadI(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ActividadI, self).get_context_data(**kwargs)
+        Usercurrent = get_object_or_404(User,pk=self.request.user.id)
+        userX = get_object_or_404(UserExtra,idUser = Usercurrent)
+        context['permiso1'] = userX.permiso1
         context['actividad'] = self.actividad
         return context
 
@@ -52,6 +56,9 @@ class ListaPonente(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ListaPonente, self).get_context_data(**kwargs)
+        Usercurrent = get_object_or_404(User,pk=self.request.user.id)
+        userX = get_object_or_404(UserExtra,idUser = Usercurrent)
+        context['permiso1'] = userX.permiso1
         context['actividad'] = self.actividad
         return context
 

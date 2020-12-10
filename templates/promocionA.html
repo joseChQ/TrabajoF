@@ -212,15 +212,15 @@ Interfaz: -----
                                 <div class="card-body">
 
                                     <div class="btn-group" role="group">
-
+                                        {% if permiso1 %}
                                         <button class="btn btn-primary btn-lg " disabled>
                                             <a  href="{% url 'RedirectP' actividad.id promocion.id %}" role="button"
                                                 style="color:white;">Click</a>
                                             <br>
                                             <i class="fa fa-eject"></i>
                                         </button>
-
-                                    </div>
+                                        {% endif %}
+                                    </div>  
                                 </div>
 
                             </div>

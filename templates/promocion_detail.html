@@ -127,10 +127,12 @@ Interfaz: -----
 
 
         <!--Boton para crear nuevo boton-->
+        {% if permiso1 %}
         <div class="event_buttons"></div>
         <div class="btn btn-primary btn-lg btn-block"
             style="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
             <a style="color:white;" href="{% url 'asignarP' promocion.id %}"> Asignar Actividad </a></div>
+        {% endif %}
     </div>
 
 

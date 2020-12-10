@@ -157,12 +157,14 @@ Interfaz: UI-021
                                 </ul>
 
                                 <br>
+                                {% if permiso1 %}
                                 <button class="btn btn-primary btn-lg " disabled>
                                     <a  href="{% url 'asignarRedirect' actividad.id ponente.id %}" role="button"
                                         style="color:white;">Asignar</a>
                                     <br>
                                     <i class="fa fa-eject"></i>
                                 </button> 
+                                {% endif %}
 
                             </div>
 

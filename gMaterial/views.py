@@ -5,6 +5,7 @@ from gMaterial.models import Material
 from django.urls import reverse_lazy
 from .forms import Form_Material
 from django.contrib.auth.models import User
+from gUsuarios.models import UserExtra
 # Requisito: R-034
 class HomePageView(ListView):
     model = Material
@@ -12,6 +13,12 @@ class HomePageView(ListView):
     def get_queryset(self):
         tmp = Material.objects.all()
         return tmp.exclude(visibilidad=False)
+    def get_context_data(self, **kwargs):
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        Usercurrent = get_object_or_404(User,pk=self.request.user.id)
+        userX = get_object_or_404(UserExtra,idUser = Usercurrent)
+        context['permiso1'] = userX.permiso1
+        return context
 
 # Requisito: R-034
 class CrearMaterial(CreateView):

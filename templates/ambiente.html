@@ -182,12 +182,14 @@ Requisito: R-020
                 </div>
             </div>
         </div>
+        {% if permiso1 %}
+        <!--Boton para crear nuevo boton-->
+        <div class="event_buttons"></div>
+        <div class="btn btn-primary btn-lg btn-block" style
+            ="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
+                <a style="color:white;" href="{% url 'crearAmbiente' %}">CREAR AMBIENTE</a></div>
+        {% endif %}
 
-    <!--Boton para crear nuevo boton-->
-    <div class="event_buttons"></div>
-    <div class="btn btn-primary btn-lg btn-block" style
-        ="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
-            <a style="color:white;" href="{% url 'crearAmbiente' %}">CREAR AMBIENTE</a></div>
     </div>
 
         <!-- BODY -->
@@ -228,19 +230,20 @@ Requisito: R-020
 
                                     <div class="card-body">
                                         <div class="btn-group" role="group">
+                                            {% if permiso1 %}
                                             <button class="btn btn-primary btn-lg ">
                                                 <a href="{% url 'updateAmbiente' ambiente.id %}" role="button"
                                                     style="color:white;">Click</a>
                                                 <br>
                                                 <i class="fa fa-edit"></i>
                                             </button>
-
                                             <button class="btn btn-danger btn-lg ">
                                                 <a href="{% url 'eliminarAmbiente' ambiente.id %}" role="button"
                                                     style="color:white;" aria-pressed="true">Click</a>
                                                 <br>
                                                 <i class="fa fa-trash"></i>
                                             </button>
+                                            {% endif  %}
                                         </div>
                                     </div>
                                 </div>

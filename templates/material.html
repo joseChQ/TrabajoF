@@ -229,21 +229,23 @@ Interfaz: UI-070
                                 <div class="card-body">
 
                                     <div class="btn-group" role="group">
-
+                                        {% if permiso1 %}
                                         <button class="btn btn-primary btn-lg " >
                                             <a  href="{% url 'updateMaterial' material.id %}" role="button"
                                                 style="color:white;">Click</a>
                                             <br>
                                             <i class="fa fa-edit"></i>
                                         </button>
+                                        {% endif %}
 
+                                        {% if permiso1 %}
                                         <button class="btn btn-danger btn-lg ">
                                             <a href="{% url 'eliminarMaterial' material.id %}" role="button"
                                                 style="color:white;" aria-pressed="true">Click</a>
                                             <br>
                                             <i class="fa fa-trash"></i>
                                         </button>
-
+                                        {% endif %}
                                         <!-- <button class="btn btn-primary btn-lg "><i class="fa fa-edit"></i></button>
                                         <button class="btn btn-danger btn-lg"><i class="fa fa-trash"></i></button> -->
 

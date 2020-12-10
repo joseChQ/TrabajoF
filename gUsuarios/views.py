@@ -1,3 +1,4 @@
+from qr_code import qrcode 
 from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -11,6 +12,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView, CreateView, UpdateView
 from .forms import CustomUserCreationForm
 from .models import UserExtra
+from PIL import Image, ImageDraw
+from io import BytesIO
+from django.core.files import File
 class Login(FormView):
     template_name = "login.html"
     form_class = AuthenticationForm
@@ -37,6 +41,14 @@ class Signup(CreateView):
             form.save()
         tmp = UserExtra.objects.create(idUser=form.instance)
         tmp.permiso2 = True
+        qrcode_img = qrcode.make(form.instance.username)
+        canvas = Image.new('RGB', (290, 290), 'white')
+        canvas.paste(qrcode_img)
+        fname = f'qr_code-{self.name}.png'
+        buffer = BytesIO()
+        canvas.save(buffer,'PNG')
+        tmp.codeQR.save(fname, File(buffer))
+        canvas.close()
         tmp.save()
         return super().form_valid(form)
     

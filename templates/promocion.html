@@ -180,12 +180,13 @@ Interfaz: -----
                 </div>
             </div>
         </div>
-
+    {% if permiso1 %}
     <!--Boton para crear nuevo boton-->
     <div class="event_buttons"></div>
     <div class="btn btn-primary btn-lg btn-block" style
         ="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
             <a style="color:white;" href="{% url 'crearPromocion' evento.id %}">Crear Promocion</a></div>
+    {% endif %}
     </div>
 
         <!-- BODY -->

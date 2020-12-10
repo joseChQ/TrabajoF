@@ -7,7 +7,7 @@ from gActividad.models import Actividad
 from django.urls import reverse_lazy
 from .forms import Form_Promocion
 from django.contrib.auth.models import User
-
+from gUsuarios.models import UserExtra
 # Requisito: R-079
 class PromocionI(ListView):
     model = Promocion
@@ -18,6 +18,9 @@ class PromocionI(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(PromocionI, self).get_context_data(**kwargs)
+        Usercurrent = get_object_or_404(User,pk=self.request.user.id)
+        userX = get_object_or_404(UserExtra,idUser = Usercurrent)
+        context['permiso1'] = userX.permiso1
         context['evento'] = self.evento
         return context
 
@@ -42,6 +45,9 @@ class PromocionD(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(PromocionD, self).get_context_data(**kwargs)
+        Usercurrent = get_object_or_404(User,pk=self.request.user.id)
+        userX = get_object_or_404(UserExtra,idUser = Usercurrent)
+        context['permiso1'] = userX.permiso1
         context['promocion'] = self.promocion
         return context
 
@@ -56,6 +62,9 @@ class AsignarP(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(AsignarP, self).get_context_data(**kwargs)
+        Usercurrent = get_object_or_404(User,pk=self.request.user.id)
+        userX = get_object_or_404(UserExtra,idUser = Usercurrent)
+        context['permiso1'] = userX.permiso1
         context['promocion'] = self.promocion
         return context
 

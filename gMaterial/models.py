@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from gEvento.models import Evento
 # Requisito: R-034
 # Modelo Relacional: MR-010
 class Material(models.Model):

@@ -126,27 +126,28 @@ Requisito: R-027
         </div>
 
 
-
+        {% if permiso1 %}
         <!--Boton para crear una nueva actividad-->
         <div class="event_buttons"></div>
         <div class="btn btn-primary btn-lg btn-block"
             style="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
             <a style="color:white;" href="{% url 'crearPonente' actividad.id %}">CREAR PONENTES</a></div>
-
+        
         <!--Boton para crear una nueva actividad-->
         <div class="event_buttons"></div>
         <div class="btn btn-primary btn-lg btn-block"
             style="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
             <a style="color:white;" href="{% url 'crearPonente' actividad.id %}">REGISTAR MATERIAL ENTREGAO</a></div>
+        {% endif %}
     </div>
 
-
+    {% if permiso1 %}
       <!--Boton para crear una nueva actividad-->
       <div class="event_buttons"></div>
       <div class="btn btn-primary btn-lg btn-block"
           style="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
           <a style="color:white;" href="{% url 'listaPonente' actividad.id %}">ASIGNAR PONENTE</a></div>
-
+    {% endif %}
   </div>
 
 

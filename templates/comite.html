@@ -181,14 +181,15 @@ Interfaz: UI-062
                 </div>
             </div>
         </div>
-
+    
+    {% if permiso1 %}
     <!--Boton para crear nuevo boton-->
     <div class="event_buttons"></div>
     <div class="btn btn-primary btn-lg btn-block" style
         ="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
             <a style="color:white;" href="{% url 'crearComite' evento.id %}" class="btn btn-lg btn-primary">CREAR COMITE</a></div>
     </div>
-
+    {% endif %}
         <!-- BODY -->
 
         <div class="events">
@@ -219,26 +220,28 @@ Interfaz: UI-062
 
                                     <div class="card-body">
                                         <div class="btn-group" role="group">
+                                            {% if permiso1 %}
                                             <button class="btn btn-primary btn-lg " >
                                                 <a href="{% url 'updateComite' comite.id %}" role="button"
                                                     style="color:white;">Click</a>
                                                 <br>
                                                 <i class="fa fa-edit"></i>
                                             </button>
-
+                                            {% endif %}
                                             <button class="btn btn-success btn-lg " >
                                                 <a  href="{% url 'comiteDetail' comite.id %}" role="button"
                                                     style="color:white;">Click</a>
                                                 <br>
                                                 <i class="fa fa-mouse-pointer""></i>
                                             </button>
-
+                                            {% if permiso1 %}
                                             <button  class="btn btn-danger btn-lg ">
                                                 <a  href="{% url 'eliminarComite' comite.id %}" role="button"
                                                     style="color:white;" >Click</a>
                                                 <br>
                                                 <i class="fa fa-trash"></i>
                                             </button>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
