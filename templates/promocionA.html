@@ -124,7 +124,7 @@ Interfaz: -----
                                                 <div
                                                     class="logo_container d-flex flex-row align-items-start justify-content-start">
                                                     <div class="logo_image">
-                                                        <div><img src="{%static 'images/DJARI_LOGO.jpg' %}" alt="">
+                                                        <div><img   src="{%static 'images/carpincho3.png' %}" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="logo_content">
@@ -152,13 +152,16 @@ Interfaz: -----
                                                     <ul>
                                                         <li class="active"><a href="{% url 'evento' %}">Home</a></li>
                                                         <li><a href="{% url 'evento' %}">Eventos</a></li>
-                                                        <li class="active" ><a href="{% url 'material' %}">Materiales</a></li>
+                                                        <li class="active"><a href="{% url 'material' %}">Materiales</a>
+                                                        </li>
                                                         <li><a href="{% url 'ambiente' %}">Ambientes</a></li>
                                                     </ul>
                                                 </nav>
                                                 <div class="header_extra ml-auto">
-                                                    
-                                                    <div class="button header_button"><a href="#">Cerrar Session</a>
+                                                    <div class="header_button" style="font-size: 40px;" id="logo_text"
+                                                        class="logo_text logo_text_not_ie">{{user.username}}</div>
+                                                    <div class="button header_button"><a
+                                                            href="{% url 'logout' %}">Cerrar Session</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -200,7 +203,7 @@ Interfaz: -----
                             <div class="card text-center border-dark mb-3" style="width: 18rem;">
                                 <div class="card-body text-dark">
                                     <h5 class="card-title">Nombre: {{actividad.nombre}}</h5>
-                                    
+
                                 </div>
 
                                 <ul class="list-group list-group-flush">
@@ -214,13 +217,13 @@ Interfaz: -----
                                     <div class="btn-group" role="group">
                                         {% if permiso1 %}
                                         <button class="btn btn-primary btn-lg " disabled>
-                                            <a  href="{% url 'RedirectP' actividad.id promocion.id %}" role="button"
+                                            <a href="{% url 'RedirectP' actividad.id promocion.id %}" role="button"
                                                 style="color:white;">Click</a>
                                             <br>
                                             <i class="fa fa-eject"></i>
                                         </button>
                                         {% endif %}
-                                    </div>  
+                                    </div>
                                 </div>
 
                             </div>
@@ -237,7 +240,7 @@ Interfaz: -----
         <!-- Relleno -->
 
 
-    
+
         <!-- Footer -->
         <footer class="footer">
             <div class="footer_content">
@@ -252,7 +255,7 @@ Interfaz: -----
                                         <div
                                             class="logo_container d-flex flex-row align-items-start justify-content-start">
                                             <div class="logo_image">
-                                                <div><img src="{%static 'images/DJARI_LOGO.jpg' %}" alt=""></div>
+                                                <div><img   src="{%static 'images/carpincho3.png' %}" alt=""></div>
                                             </div>
                                             <div class="logo_content">
                                                 <div id="logo_text" class="logo_text logo_text_not_ie">Gestor de

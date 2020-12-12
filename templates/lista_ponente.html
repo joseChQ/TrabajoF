@@ -90,7 +90,8 @@ Interfaz: UI-021
 
                                                 <div class="header_extra ml-auto">
                                                     <!--<div class="header_search"><i class="fa fa-search" aria-hidden="true"></i></div>-->
-                                                    <div class="button header_button"><a href="#">Cerrar Session</a>
+                                                    <div  class="header_button" style="font-size: 40px;" id="logo_text" class="logo_text logo_text_not_ie">{{user.username}}</div>
+                                                    <div   class="button header_button"><a href="{% url 'logout' %}">Cerrar Session</a>
                                                     </div>
                                                 </div>
 
@@ -202,7 +203,7 @@ Interfaz: UI-021
                                 <a href="#">
                                     <div class="logo_container d-flex flex-row align-items-start justify-content-start">
                                         <div class="logo_image">
-                                            <div><img src="{%static 'images/DJARI_LOGO.jpg' %}" alt=""></div>
+                                            <div><img   src="{%static 'images/carpincho3.png' %}" alt=""></div>
                                         </div>
                                         <div class="logo_content">
                                             <div id="logo_text" class="logo_text logo_text_not_ie">Gestor de Eventos
