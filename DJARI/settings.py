@@ -90,7 +90,7 @@ DATABASES = {
     'NAME': 'djari',
     'USER': 'postgres',
     # 'PASSWORD': 'icpc2020',
-    'PASSWORD': 'lolxd365',
+    'PASSWORD': 'root',
     # 'PASSWORD': 'lolxd246',
     'HOST': '127.0.0.1',
     'PORT': '5432',
