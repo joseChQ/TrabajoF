@@ -3,7 +3,6 @@ from django.views.generic import ListView, CreateView, FormView
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 # Create your views here.
-
 # Base de datos
 from .models import Evento
 from .models import Subevento
