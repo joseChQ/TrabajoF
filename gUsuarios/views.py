@@ -13,7 +13,7 @@ from .forms import CustomUserCreationForm,FormularioLogin
 from .models import UserExtra
 
 class Login(FormView):
-    template_name = "login.html"
+    template_name = "gUsuarios/login.html"
     form_class = FormularioLogin
     success_url = reverse_lazy('evento')
 
@@ -32,7 +32,7 @@ class Login(FormView):
 class Signup(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
-    template_name = 'signup.html'
+    template_name = 'gUsuarios/signup.html'
     def form_valid(self, form):
         if form.is_valid():
             form.save()

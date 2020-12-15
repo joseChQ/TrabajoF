@@ -17,7 +17,7 @@ from gPromocion.models import Promocion
 # Requisito: R-006
 class HomePageView(ListView):
     model = Evento
-    template_name = 'evento.html'
+    template_name = 'gEvento/evento.html'
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
         Usercurrent = get_object_or_404(User, pk=self.request.user.id)
@@ -28,7 +28,7 @@ class HomePageView(ListView):
 # Requisito: R-006
 class EventoI(ListView):
     model = Subevento
-    template_name = 'evento_detail.html'
+    template_name = 'gEvento/evento_detail.html'
     #UserCurrent = User.objects.filter(id=1)
     def get_queryset(self):
         self.evento = get_object_or_404(Evento, pk = self.kwargs['pk'])
@@ -46,7 +46,7 @@ class EventoI(ListView):
 
 # Requisito: R-006
 class CrearEvento(CreateView):
-    template_name = 'evento_new.html'
+    template_name = 'gEvento/evento_new.html'
     form_class = Form_Evento
     success_url = reverse_lazy('evento')
 
@@ -54,7 +54,7 @@ class CrearEvento(CreateView):
 # Requisito: R-008
 class CrearSubevento(CreateView):
     form_class = Form_Subevento
-    template_name = 'subevento_new.html'
+    template_name = 'gEvento/subevento_new.html'
     def form_valid(self, form):
         self.evento = get_object_or_404(Evento, pk = self.kwargs['pk'])
         form.instance.idEvento = self.evento
@@ -63,7 +63,7 @@ class CrearSubevento(CreateView):
 # Requisito: R-008
 class SubeventoI(ListView):
     model = Actividad
-    template_name = 'subevento_detail.html'
+    template_name = 'gEvento/subevento_detail.html'
     def get_queryset(self):
         self.subevento = get_object_or_404(Subevento, pk = self.kwargs['pk'])
         return Actividad.objects.filter(idSubevento =self.subevento)

@@ -26,6 +26,7 @@ class Personal(models.Model):
     DNI = models.CharField(max_length = 8)
     telefono = models.CharField(max_length = 9)
     correoElectronico = models.EmailField(max_length = 45)
+    
 # Requisito: R-070
 # Modelo Relacional: MR-012
 class ComitePersonal(models.Model):

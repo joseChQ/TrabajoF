@@ -1,34 +1,18 @@
 <!--
-Requisito: R-069
+Requisito: R-079 
+Interfaz: -----
 -->
+{% extends '../base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Events</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Conference project">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
-    <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{%static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'plugins/OwlCarousel2-2.2.1/animate.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'styles/events.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'styles/events_responsive.css'%}">
-
-    <style>
-        .event_text {
-
-            color: rebeccapurple;
-        }
-    </style>
-</head>
-
-<body>
-
+{% block title %} Promoción {% endblock %}
+{% block HeaderExtras %}
+<style>
+    .event_text {
+        color: rebeccapurple;
+    }
+</style>
+{% endblock %}
+{% block content %}
     <div class="super_container">
 
 
@@ -53,7 +37,7 @@ Requisito: R-069
                                                 <div
                                                     class="logo_container d-flex flex-row align-items-start justify-content-start">
                                                     <div class="logo_image">
-                                                        <div> <img   src="{%static 'images/carpincho3.png' %}" alt="">
+                                                        <div><img   src="{%static 'images/carpincho3.png' %}" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="logo_content">
@@ -110,7 +94,7 @@ Requisito: R-069
                     <div class="row">
                         <div class="col">
                             <div class="home_content d-flex flex-row align-items-end justify-content-start">
-                                <div class="current_page">{{comite.nombre}}: Personales </div>
+                                <div class="current_page"> Promoción: Lista de Actividades </div>
                                 <div class="breadcrumbs ml-auto">
                                     <ul>
                                         <li><a href="index.html">Home</a></li>
@@ -125,12 +109,13 @@ Requisito: R-069
         </div>
 
 
-        {% if permiso1 %}
+
         <!--Boton para crear nuevo boton-->
+        {% if permiso1 %}
         <div class="event_buttons"></div>
         <div class="btn btn-primary btn-lg btn-block"
             style="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
-            <a style="color:white;" href="{% url 'crearPersonal' comite.id %}"> Crear Personal </a></div>
+            <a style="color:white;" href="{% url 'asignarP' promocion.id %}"> Asignar Actividad </a></div>
         {% endif %}
     </div>
 
@@ -144,40 +129,37 @@ Requisito: R-069
                 <div class="col">
 
 
-                    <!-- Cartas de Personal-->
+                    <!-- Cartas de Subevento-->
                     <div class="card-deck">
 
 
-                        {% for personal in object_list %}
+                        {% for actividad in object_list %}
 
                         <div class="card text-center border-dark mb-3" style="width: 18rem;">
                             <div class="card-body">
-                                
-                                <h5 class="card-title">Nombre:{{personal.nombre}} </h5>
-                    
+
+                                <h5 class="card-title">Nombre:{{actividad.nombre}} </h5>
+                                <!-- <p class="card-text">Descripcion: {{subevento.descripcion}}</p> -->
 
                             </div>
 
                             <ul class="list-group list-group-flush">
-                                <!-- <li class="list-group-item">Fecha Inicio : {{actividad.fechaInicio}} </li> -->
-                                <!-- <li class="list-group-item">Fecha Fin : {{actividad.fechaClausura}}</li> -->
-                                <li class="list-group-item">Apellidos: {{personal.apellido}} </li>
-                                <li class="list-group-item">DNI: {{personal.DNI}} </li>
-                                <li class="list-group-item">Telefono: {{personal.telefono}} </li>
-                                <li class="list-group-item">Correo Electronico: {{personal.correoElectronico}} </li>
+                                <li class="list-group-item">Fecha Inicio : {{actividad.fechaInicio}} </li>
+                                <li class="list-group-item">Fecha Fin : {{actividad.fechaClausura}}</li>
                             </ul>
 
-                     
-                            </div>
 
-                            
+
                         </div>
-                        {% endfor %}
+
 
                     </div>
+                    {% endfor %}
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -200,7 +182,7 @@ Requisito: R-069
                                 <a href="#">
                                     <div class="logo_container d-flex flex-row align-items-start justify-content-start">
                                         <div class="logo_image">
-                                            <div> <img   src="{%static 'images/carpincho3.png' %}" alt=""> </div>
+                                            <div><img   src="{%static 'images/carpincho3.png' %}" alt=""></div>
                                         </div>
                                         <div class="logo_content">
                                             <div id="logo_text" class="logo_text logo_text_not_ie">Gestor de Eventos
@@ -260,14 +242,4 @@ Requisito: R-069
     </footer>
 
     </div>
-
-    <script src="{%static 'styles/bootstrap4/popper.js' %}"></script>
-    <script src="{%static 'js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{%static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
-    <script src="{%static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
-    <script src="{%static 'plugins/easing/easing.js' %}"></script>
-    <script src="{%static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
-    <script src="{%static 'js/events.js' %}"></script>
-</body>
-
-</html>
+{% endblock %}

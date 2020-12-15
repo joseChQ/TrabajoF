@@ -14,7 +14,7 @@ class Form_Comite(forms.ModelForm):
         labels = {
             'nombre' : 'Nombre del Comite',
             'url' : 'Url',
-            'Descripcion' : 'Descripcion',
+            'Descripción' : 'Descripcion',
         }
         widgets = {
             'nombre' : forms.TextInput(attrs={'class':'form-control'}),

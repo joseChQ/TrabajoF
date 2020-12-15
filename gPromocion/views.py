@@ -11,7 +11,7 @@ from gUsuarios.models import UserExtra
 # Requisito: R-079
 class PromocionI(ListView):
     model = Promocion
-    template_name = 'promocion.html'
+    template_name = 'gPromocion/promocion.html'
     def get_queryset(self):
         self.evento = get_object_or_404(Evento, pk = self.kwargs['pk'])
         return Promocion.objects.filter(idEvento=self.evento)
@@ -27,7 +27,7 @@ class PromocionI(ListView):
 # Requisito: R-079
 class CrearPromocion(CreateView):
     form_class = Form_Promocion
-    template_name = 'promocion_new.html'
+    template_name = 'gPromocion/promocion_new.html'
     success_url =""
     def form_valid(self, form):
         self.evento = get_object_or_404(Evento, pk = self.kwargs['pk'])
@@ -38,7 +38,7 @@ class CrearPromocion(CreateView):
 # Requisito: R-079
 class PromocionD(ListView):
     model = Actividad
-    template_name = 'promocion_detail.html'
+    template_name = 'gPromocion/promocion_detail.html'
     def get_queryset(self):
         self.promocion = get_object_or_404(Promocion, pk = self.kwargs['pk'])
         return Actividad.objects.filter(promocion =self.promocion)
@@ -54,7 +54,7 @@ class PromocionD(ListView):
 # Requisito: R-080
 class AsignarP(ListView):
     model = Actividad
-    template_name = 'promocionA.html'
+    template_name = 'gPromocion/promocionA.html'
     def get_queryset(self):
         self.promocion = get_object_or_404(Promocion, pk = self.kwargs['pk'])
         tmp = Actividad.objects.all()

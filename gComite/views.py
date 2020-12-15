@@ -11,7 +11,7 @@ from gUsuarios.models import UserExtra
 # Requisito: R-069
 class ComiteI(ListView):
     model = Comite
-    template_name = 'comite.html'
+    template_name = 'gComite/comite.html'
     def get_queryset(self):
         self.evento = get_object_or_404(Evento, pk = self.kwargs['pk'])
         tmp = Comite.objects.filter(idEvento=self.evento)
@@ -28,7 +28,7 @@ class ComiteI(ListView):
 # Requisito: R-069
 class CrearComite(CreateView):
     form_class = Form_Comite
-    template_name = 'comite_new.html'
+    template_name = 'gComite/comite_new.html'
     success_url =""
     def form_valid(self, form):
         self.evento = get_object_or_404(Evento, pk = self.kwargs['pk'])
@@ -39,7 +39,7 @@ class CrearComite(CreateView):
 # Requisito: R-069
 class ComiteD(ListView):
     model = Personal
-    template_name = 'comite_detail.html'
+    template_name = 'gComite/comite_detail.html'
     def get_queryset(self):
         self.comite = get_object_or_404(Comite, pk = self.kwargs['pk'])
         return Personal.objects.filter(comites=self.comite)
@@ -55,7 +55,7 @@ class ComiteD(ListView):
 # Requisito: R-068
 class CrearPersonal(CreateView):
     form_class = Form_Personal
-    template_name = 'personal_new.html'
+    template_name = 'gComite/personal_new.html'
     success_url =""
     def form_valid(self, form):
         self.comite = get_object_or_404(Comite, pk = self.kwargs['pk'])
@@ -73,7 +73,7 @@ class UpdateComite(UpdateView):
             'url',
             'descripcion',
         ]
-    template_name = 'comite_form.html'
+    template_name = 'gComite/comite_form.html'
     success_url = ''
     def form_valid(self, form):
         self.comite = get_object_or_404(Comite, pk = self.kwargs['pk'])

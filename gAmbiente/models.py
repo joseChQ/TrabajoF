@@ -10,4 +10,4 @@ class Ambiente(models.Model):
     visibilidad = models.BooleanField(default=True)
     
     def __str__(self):
-        return self.id + ': ' + self.descripcion
+        return f'{self.id}:{self.descripcion}'

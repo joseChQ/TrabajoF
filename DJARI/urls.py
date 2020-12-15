@@ -18,11 +18,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('gEvento.urls')),
-    path('gActividad/', include('gActividad.urls')),
-    path('gMaterial/', include('gMaterial.urls')),
-    path('gAmbiente/', include('gAmbiente.urls')),
-    path('gPromocion/', include('gPromocion.urls')),
-    path('gComite/', include('gComite.urls')),
-    path('gUsuarios/',include('gUsuarios.urls')),
+    path('', include('gEvento.urls')), # templates ordenados 
+    path('gActividad/', include('gActividad.urls')), # templates ordenados
+    path('gMaterial/', include('gMaterial.urls')), # templates ordenados
+    path('gAmbiente/', include('gAmbiente.urls')), # templates ordenados
+    path('gPromocion/', include('gPromocion.urls')), # templates ordenados
+    path('gComite/', include('gComite.urls')), # templates ordenados
+    path('gUsuarios/',include('gUsuarios.urls')), # templates ordenados
 ]

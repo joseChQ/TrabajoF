@@ -9,7 +9,7 @@ from gUsuarios.models import UserExtra
 # Requisito: R-034
 class HomePageView(ListView):
     model = Material
-    template_name = 'material.html'
+    template_name = 'gMaterial/material.html'
     def get_queryset(self):
         tmp = Material.objects.all()
         return tmp.exclude(visibilidad=False)
@@ -23,15 +23,16 @@ class HomePageView(ListView):
 # Requisito: R-034
 class CrearMaterial(CreateView):
     form_class = Form_Material
-    template_name = 'material_new.html'
+    template_name = 'gMaterial/material_new.html'
     success_url = reverse_lazy('material')
+    
 # Requisito: R-034
 class UpdateMaterial(UpdateView):
     model = Material
     fields = ['nombre',
             'stock',
             'costo',]
-    template_name = 'material_form.html'
+    template_name = 'gMaterial/material_form.html'
     success_url = reverse_lazy('material')
 
 # Requisito: R-034

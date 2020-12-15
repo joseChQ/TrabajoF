@@ -1,37 +1,18 @@
 <!--
-Requisito: R-006
+Requisito: R008
 -->
+{% extends '../base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Events</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Conference project">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
-    <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{%static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'plugins/OwlCarousel2-2.2.1/animate.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'styles/events.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'styles/events_responsive.css'%}">
-
+{% block title %}Subevento{% endblock %}
+{% block HeaderExtras %}
     <style>
         .event_text {
-
             color: rebeccapurple;
         }
     </style>
-</head>
-
-<body>
-
+{% endblock %}
+{% block content %}
     <div class="super_container">
-
-
         <!-- Home -->
 
         <div class="home">
@@ -53,7 +34,7 @@ Requisito: R-006
                                                 <div
                                                     class="logo_container d-flex flex-row align-items-start justify-content-start">
                                                     <div class="logo_image">
-                                                        <div> <img   src="{%static 'images/carpincho3.png' %}" alt="">
+                                                        <div><img   src="{%static 'images/carpincho3.png' %}" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="logo_content">
@@ -82,9 +63,6 @@ Requisito: R-006
                                                     <ul>
                                                         <li class="active"><a href="{% url 'evento' %}">Home</a></li>
                                                         <li class="active"><a href="{% url 'evento' %}">Eventos</a></li>
-                                                        <li ><a href="{% url 'comite' evento.id    %}">Comité</a></li>
-                                                        <li><a href="{% url 'promocion' evento.id    %}">Promociones</a>
-                                                        </li>
                                                         <li><a href="{% url 'material' %}">Materiales</a></li>
                                                         <li><a href="{% url 'ambiente' %}">Ambientes</a></li>
                                                     </ul>
@@ -107,18 +85,22 @@ Requisito: R-006
                 </div>
             </header>
 
+            <!-- Detalles -->
             <div class="home_content_container">
                 <div class="container">
                     <div class="row">
                         <div class="col">
                             <div class="home_content d-flex flex-row align-items-end justify-content-start">
-                                <div class="current_page">{{evento.nombre}} : Subeventos</div>
+                                <div class="current_page">{{subevento.nombre}} : Actividades</div>
                                 <div class="breadcrumbs ml-auto">
-                                    <ul>
-                                        <li><a href="{% url 'evento' %}">Home</a></li>
-                                        <li>Eventos</li>
-                                        <li>Subeventos</li>
-                                    </ul>
+                                    <div class="breadcrumbs ml-auto">
+                                        <ul>
+                                            <li><a href="{% url 'evento' %}">Home</a></li>
+                                            <li>Eventos</li>
+                                            <li>Subeventos</li>
+                                            <li>Actividad</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -128,19 +110,18 @@ Requisito: R-006
         </div>
 
 
-
-        <!--Boton para crear nuevo boton-->
-        <div class="event_buttons"></div>
         {% if permiso1 %}
+        <!--Boton para crear una nueva actividad-->
+        <div class="event_buttons"></div>
         <div class="btn btn-primary btn-lg btn-block"
             style="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
-            <a style="color:white;" href="{% url 'crearSubevento' evento.id %}">CREAR SUB-EVENTO</a></div>
+            <a style="color:white;" href="{% url 'crearActividad' subevento.id %}">CREAR ACTVIDAD</a></div>
         {% endif %}
     </div>
 
 
 
-    <!-- Events -->
+    <!-- Actividades -->
 
     <div class="events">
         <div class="container">
@@ -152,43 +133,38 @@ Requisito: R-006
                     <div class="card-deck">
 
 
-                        {% for subevento in object_list %}
+                        {% for actividad in object_list %}
 
                         <div class="card text-center border-dark mb-3" style="width: 18rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Nombre: {{subevento.nombre}}</h5>
-                                <!-- <p class="card-text">Descripcion: {{subevento.descripcion}}</p> -->
+                                <h5 class="card-title">Nombre: {{actividad.nombre}}</h5>
+
 
                             </div>
 
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Fecha Inicio : {{subevento.fechaInicio}}</li>
-                                <li class="list-group-item">Fecha Fin : {{subevento.fechaClausura}}</li>
+                                <li class="list-group-item">Fecha Inicio : {{actividad.fechaInicio}}</li>
+                                <li class="list-group-item">Fecha Fin : {{actividad.fechaClausura}}</li>
                             </ul>
 
                             <div class="card-body">
                                 <div class="btn-group" role="group">
-                                    <!-- Editar -->
                                     {% if permiso1 %}
                                     <button class="btn btn-primary btn-lg " disabled>
-                                        <a  role="button"
-                                            style="color:white;">Editar</a>
+                                        <a  role="button" style="color:white;">Editar</a>
                                         <br>
                                         <i class="fa fa-edit"></i>
                                     </button>
                                     {% endif %}
-
-                                    <button class="btn btn-success btn-lg " >
-                                        <a href="{% url 'subeventoDetail' subevento.id %}" role="button"
-                                            style="color:white;" >Ver</a>
+                                    <button class="btn btn-success btn-lg ">
+                                        <a href="{% url 'actividadDetail' actividad.id %}" role="button"
+                                            style="color:white;">Ver</a>
                                         <br>
                                         <i class="fa fa-wpexplorer"></i>
                                     </button>
-
                                     {% if permiso1 %}
                                     <button class="btn btn-danger btn-lg " disabled>
-                                        <a  role="button"
-                                            style="color:white;" aria-pressed="true">Click</a>
+                                        <a role="button" style="color:white;" aria-pressed="true">Eliminar</a>
                                         <br>
                                         <i class="fa fa-trash"></i>
                                     </button>
@@ -196,7 +172,7 @@ Requisito: R-006
                                 </div>
                             </div>
 
-                            
+
                         </div>
                         {% endfor %}
 
@@ -226,7 +202,7 @@ Requisito: R-006
                                 <a href="#">
                                     <div class="logo_container d-flex flex-row align-items-start justify-content-start">
                                         <div class="logo_image">
-                                            <div> <img   src="{%static 'images/carpincho3.png' %}" alt=""> </div>
+                                            <div><img   src="{%static 'images/carpincho3.png' %}" alt=""></div>
                                         </div>
                                         <div class="logo_content">
                                             <div id="logo_text" class="logo_text logo_text_not_ie">Gestor de Eventos
@@ -287,13 +263,4 @@ Requisito: R-006
 
     </div>
 
-    <script src="{%static 'styles/bootstrap4/popper.js' %}"></script>
-    <script src="{%static 'js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{%static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
-    <script src="{%static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
-    <script src="{%static 'plugins/easing/easing.js' %}"></script>
-    <script src="{%static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
-    <script src="{%static 'js/events.js' %}"></script>
-</body>
-
-</html>
+{% endblock %}

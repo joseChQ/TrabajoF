@@ -1,40 +1,25 @@
 <!--
-Requisito: R-006 
+Requisito: R-069
 -->
+{% extends '../base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% block title %} Comité {% endblock %}
+{% block HeaderExtras %}
+    <style>
+        .event_text {
+            color: rebeccapurple;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="super_container">
 
-<head>
-    <title>Events</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Conference project">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
-    <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{%static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'plugins/OwlCarousel2-2.2.1/animate.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'styles/events.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'styles/events_responsive.css'%}">
 
-    
-
-</head>
-
-<body>
-
-    <div class="super_container"></div>
         <!-- Home -->
-       
+
         <div class="home">
-            <div class="parallax_background parallax-window " 
-            data-parallax="scroll"
-            data-image-src="{%static 'images/events.jpg'%}"
-            
-                data-speed="0.8">
-            </div>
+            <div class="parallax_background parallax-window" data-parallax="scroll"
+                data-image-src="{%static 'images/events.jpg'%}" data-speed="0.8"></div>
 
             <!-- Header -->
 
@@ -78,13 +63,11 @@ Requisito: R-006
                                                 class="header_nav_content d-flex flex-row align-items-center justify-content-start">
                                                 <nav class="main_nav">
                                                     <ul>
-                                                        
                                                         <li class="active"><a href="{% url 'evento' %}">Home</a></li>
                                                         <li class="active"><a href="{% url 'evento' %}">Eventos</a></li>
                                                         <li><a href="{% url 'material' %}">Materiales</a></li>
-                        
                                                         <li><a href="{% url 'ambiente' %}">Ambientes</a></li>
-                                                       
+
                                                     </ul>
                                                 </nav>
 
@@ -108,13 +91,13 @@ Requisito: R-006
             <div class="home_content_container">
                 <div class="container">
                     <div class="row">
-                        <div class="col ">
-                            <div class="home_content d-flex flex-row align-items-end justify-content-start" >
-                                <div class="current_page">Lista de eventos</div>
+                        <div class="col">
+                            <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                                <div class="current_page">{{comite.nombre}}: Personales </div>
                                 <div class="breadcrumbs ml-auto">
                                     <ul>
-                                        <li><a href="{% url 'evento' %}">Home</a></li>
-                                        <li>Eventos</li>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li>Events</li>
                                     </ul>
                                 </div>
                             </div>
@@ -125,15 +108,16 @@ Requisito: R-006
         </div>
 
 
-
+        {% if permiso1 %}
         <!--Boton para crear nuevo boton-->
         <div class="event_buttons"></div>
         <div class="btn btn-primary btn-lg btn-block"
             style="background-image: -webkit-linear-gradient(left, #4867c0, #329fec);">
-        {% if permiso1 %}
-            <a style="color:white;" href="{% url 'crearEvento' %}">CREAR EVENTO</a></div>
+            <a style="color:white;" href="{% url 'crearPersonal' comite.id %}"> Crear Personal </a></div>
         {% endif %}
     </div>
+
+
 
     <!-- Events -->
 
@@ -143,79 +127,47 @@ Requisito: R-006
                 <div class="col">
 
 
+                    <!-- Cartas de Personal-->
+                    <div class="card-deck">
 
-                    {% for evento in object_list %}
 
-                    <div class="event">
-                        <div class="row row-lg-eq-height">
-                            <div class="col-lg-6 event_col">
-                                <div class="event_image_container">
-                                    <div class="background_image"
-                                        style="background-image:url({%static 'images/event_9.jpg' %})"></div>
-                                    <div class="date_container">
-                                        <a href="#">
-                                            <span
-                                                class="date_content d-flex flex-column align-items-center justify-content-center">
-                                                <div class="date_day">{{ evento.fechaInicio|date:"d" }}</div>
-                                                <div class="date_month">{{ evento.fechaInicio|date:"M" }}</div>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
+                        {% for personal in object_list %}
+
+                        <div class="card text-center border-dark mb-3" style="width: 18rem;">
+                            <div class="card-body">
+                                
+                                <h5 class="card-title">Nombre:{{personal.nombre}} </h5>
+                    
+
                             </div>
-                            <div class="col-lg-6 event_col">
-                                <div class="event_content">
-                                    <div class="event_title">{{evento.nombre}}</div>
-                                    <div class="event_location">@ Arequipa-Peru</div>
-                                    <div class="event_text">
-                                        <p style="color: #329fec;">Nota : {{evento.detalle}}</p>
-                                        <p style="color: #329fec;">Fecha Inicio :{{evento.fechaInicio}}</p>
-                                        <p style="color: #329fec;">Fecha Clausura :{{evento.fechaClausura}} </p>
-                                        <p style="color: #329fec;">Ubicación :{{evento.ubicacion}} </p>
 
-                                        <br>
-                                    </div>
-                                    <!-- Event Speaker -->
-                                    <div class="event_speaker d-flex flex-row align-items-center justify-content-start">
-                                        <div>
-                                            <div class="event_speaker_image"><img
-                                                    src="{%static 'images/carpincho3.png ' %}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="event_speaker_content">
-                                            <div class="event_speaker_name">DJARI</div>
-                                        </div>
-                                    </div>
-                                </div>
-                               
-                                <div class="event_buttons">
-                                    {% if permiso1 %}
-                                    <div class="button event_button event_button_1"><a href="#">Adaptar</a></div>
-                                    {% endif %}
-                                    <div class="button_2 event_button event_button_2"><a
-                                            href="{% url 'eventoDetail' evento.id    %}">Ver</a></div>
-                                    {% if permiso1 %}
-                                    <div class="button_2 event_button event_button_2"><a href="#">Editar</a></div>
-                                    {% endif %}
-                                </div>
-                        
+                            <ul class="list-group list-group-flush">
+                                <!-- <li class="list-group-item">Fecha Inicio : {{actividad.fechaInicio}} </li> -->
+                                <!-- <li class="list-group-item">Fecha Fin : {{actividad.fechaClausura}}</li> -->
+                                <li class="list-group-item">Apellidos: {{personal.apellido}} </li>
+                                <li class="list-group-item">DNI: {{personal.DNI}} </li>
+                                <li class="list-group-item">Telefono: {{personal.telefono}} </li>
+                                <li class="list-group-item">Correo Electronico: {{personal.correoElectronico}} </li>
+                            </ul>
+
+                     
                             </div>
+
+                            
                         </div>
+                        {% endfor %}
+
                     </div>
-
-
-                    {% endfor %}
-
-
-
-
-
-
-
                 </div>
             </div>
         </div>
     </div>
+
+
+
+    <!-- Eventss -->
+
+
 
     <!-- Footer -->
 
@@ -246,7 +198,7 @@ Requisito: R-006
                                     funcionalidades y interacciones. Ademas contamos con paquetes para todos los
                                     usuarios extendiendo tanto la version gratis como la version premiun que ofrece
                                     otras cualidades como mas emojis en los eventos no hay al crear un evento y
-                                    mucho mas gracias por comprar DJARI tan solo por $99</p>
+                                    mucho mas gracias por comprar DJARI tan solo por $53</p>
                             </div>
                         </div>
                     </div>
@@ -291,14 +243,4 @@ Requisito: R-006
     </footer>
 
     </div>
-
-    <script src="{%static 'styles/bootstrap4/popper.js' %}"></script>
-    <script src="{%static 'js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{%static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
-    <script src="{%static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
-    <script src="{%static 'plugins/easing/easing.js' %}"></script>
-    <script src="{%static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
-    <script src="{%static 'js/events.js' %}"></script>
-</body>
-
-</html>
+{% endblock %}

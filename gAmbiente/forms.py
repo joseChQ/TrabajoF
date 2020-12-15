@@ -18,8 +18,8 @@ class Form_Ambiente(forms.ModelForm):
             'puertasEscape' : 'Cantidad de puertas de escape ',
         }
         widgets = {      
-            'nombre' : forms.TextInput(attrs={'class':'form-control'}),
-            'descripcion' : forms.TextInput(attrs={'class':'form-control'}),
-            'aforo' : forms.NumberInput(attrs={'class':'form-control'}),
-            'puertasEscape' : forms.NumberInput(attrs={'class':'form-control'}),
+            'nombre' : forms.TextInput(attrs={'type':'text','class':'form-control'}),
+            'descripcion' : forms.TextInput(attrs={'type':'textarea','class':'form-control'}),
+            'aforo' : forms.NumberInput(attrs={'type':'number','class':'form-control'}),
+            'puertasEscape' : forms.NumberInput(attrs={'type':'number','class':'form-control'}),
         }

@@ -10,7 +10,7 @@ from gUsuarios.models import UserExtra
 # Requisito: R-020
 class HomePageView(ListView):
     model = Ambiente
-    template_name = 'ambiente.html'
+    template_name = 'gAmbiente/ambiente.html'
     def get_queryset(self):
         tmp = Ambiente.objects.all()
         return tmp.exclude(visibilidad=False)
@@ -24,7 +24,7 @@ class HomePageView(ListView):
 # Requisito: R-020
 class CrearAmbiente(CreateView):
     form_class = Form_Ambiente
-    template_name = 'ambiente_new.html'
+    template_name = 'gAmbiente/ambiente_new.html'
     success_url = reverse_lazy('ambiente')
 
 # Requisito: R-018
@@ -32,9 +32,10 @@ class UpdateAmbiente(UpdateView):
     model = Ambiente
     fields = ['nombre','descripcion',
             'aforo',
-            'puertasEscape',]
-    template_name = 'ambiente_form.html'
+            'puertasEscape']
+    template_name = 'gAmbiente/ambiente_form.html'
     success_url = reverse_lazy('ambiente')
+    
 # Requisito: R-018
 class EliminarRedirect(RedirectView):
     pattern_name = 'ambiente'

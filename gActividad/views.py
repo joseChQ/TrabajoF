@@ -10,7 +10,7 @@ from gUsuarios.models import UserExtra
 # Requisito: R-027
 class ActividadI(ListView):
     model = Ponente
-    template_name = 'actividad_detail.html'
+    template_name = 'gActividad/actividad_detail.html'
     def get_queryset(self):
         self.actividad = get_object_or_404(Actividad, pk = self.kwargs['pk'])
         return Ponente.objects.filter(actividades=self.actividad)
@@ -26,7 +26,7 @@ class ActividadI(ListView):
 # Requisito: R-029
 class CrearPonente(CreateView):
     form_class = Form_Ponente
-    template_name = 'ponente_new.html'
+    template_name = 'gActividad/ponente_new.html'
     success_url =""
     def form_valid(self, form):
         self.actividad = get_object_or_404(Actividad, pk = self.kwargs['pk'])
@@ -39,7 +39,7 @@ class CrearPonente(CreateView):
 # Requisito: R-027
 class CrearActividad(CreateView):
     form_class = Form_Actividad
-    template_name = 'actividad_new.html'
+    template_name = 'gActividad/actividad_new.html'
     def form_valid(self, form):
         self.subevento = get_object_or_404(Subevento, pk = self.kwargs['pk'])
         form.instance.idSubevento = self.subevento
@@ -48,8 +48,9 @@ class CrearActividad(CreateView):
 # Requisito: R-029
 class ListaPonente(ListView):
     model = Ponente
-    template_name = 'lista_ponente.html'
+    template_name = 'gActividad/lista_ponente.html'
     def get_queryset(self):
+        # solo muestra los ponentes que no están asignados a la actividad
         self.actividad = get_object_or_404(Actividad, pk = self.kwargs['pk'])
         tmp = Ponente.objects.all()
         return tmp.exclude(actividades=self.actividad)
