@@ -212,18 +212,21 @@ Requisito: R-020
                                     <div class="card-body">
                                         <div class="btn-group" role="group">
                                             {% if permiso1 %}
-                                            <button class="btn btn-primary btn-lg ">
+                                            <button class="btn btn-primary btn-xs">
                                                 <a href="{% url 'updateAmbiente' ambiente.id %}" role="button"
-                                                    style="color:white;">Modificar Ambiente</a>
+                                                    style="color:white;">Modificar</a>
                                                 <br>
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                            <button class="btn btn-danger btn-lg ">
+                                        </div>
+                                            <br>
+                                        <div class="btn-group" role="group">
+                                            <button class="btn btn-danger btn-xs">
                                                 <a href="{% url 'eliminarAmbiente' ambiente.id %}" role="button"
-                                                    style="color:white;" aria-pressed="true">Eliminar Ambiente</a>
+                                                    style="color:white;" aria-pressed="true">Eliminar</a>
                                                 <br>
                                                 <i class="fa fa-trash"></i>
-                                            </button>
+                                        </button>
                                             {% endif  %}
                                         </div>
                                     </div>
